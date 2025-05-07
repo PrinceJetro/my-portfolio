@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Professional portfolio of Adegbuyi Jephthah(PrinceJetro) - Software Developer & EdTech Founder"
+    />
+    <title>My Projects | Adegbuyi Jephthah</title>
+    <link rel="icon" href="images/profile.jpg" type="image/png" />
+    <link rel="apple-touch-icon" href="images/profile.jpg" type="image/png" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">Jephthah<span>.</span></a>
+          <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="projects-page">
+      <section class="projects-hero">
+        <div class="container">
+          <h1>My Projects</h1>
+          <p>Building solutions that bridge technology and education</p>
+        </div>
+      </section>
+
+      <section class="projects-section">
+        <div class="container">
+          <div class="projects-controls">
+            <div class="view-options">
+              <button class="view-btn active" data-view="grid">
+                <i class="fas fa-th"></i> Grid
+              </button>
+              <button class="view-btn" data-view="list">
+                <i class="fas fa-list"></i> List
+              </button>
+            </div>
+            <!--                     
+                    <div class="filter-options">
+                        <select id="category-filter" class="filter-select">
+                            <option value="all">All Categories</option>
+                            <option value="edtech">EdTech</option>
+                            <option value="web">Web Applications</option>
+                            <option value="opensource">Open Source</option>
+                            <option value="mobile">Mobile Apps</option>
+                        </select>
+                    </div> -->
+          </div>
+
+          <div class="projects-grid" id="projects-container">
+            <!-- Project 1 - Tutorial Haven -->
+            <div class="project-card" data-category="edtech">
+              <div class="project-image">
+                <img
+                  src="images/Tutorial -Haven.png"
+                  alt="Tutorial Haven Platform"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="tutorial-haven">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Tutorial Haven</h3>
+                <p class="project-description">
+                  An interactive EdTech platform designed to help students
+                  prepare for JAMB, WAEC, and NECO with past question drills,
+                  AI-powered tutoring, timed CBT simulations, and comprehensive
+                  subject resources.
+                </p>
+
+                <div class="project-tags">
+                  <span>Python</span>
+                  <span>Django</span>
+                  <span>Postgress</span>
+                  <span>AI</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://tutorialhaven.com.ng"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/Tutorial-Haven"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 2 - Yasug  -->
+            <div class="project-card" data-category="edtech mobile">
+              <div class="project-image">
+                <img
+                  src="images/yasug-anonymous.png"
+                  alt="yasug-anonymous"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="learnly">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Yasug Anonymous</h3>
+                <p class="project-description">
+                  A secure and anonymous platform for reporting issues and
+                  making your voice heard without fear of retaliation.
+                </p>
+                <div class="project-tags">
+                  <span>React</span>
+                  <span>Django</span>
+                  <span>Rest API</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://yasuganonymous.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/yasug"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3 - CodeCollab -->
+            <div class="project-card" data-category="web opensource">
+              <div class="project-image">
+                <img
+                  src="images/sneakers.png"
+                  alt="Sneakers Interface"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="codecollab">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Sneakers Store</h3>
+                <p class="project-description">
+                  Discover our limited edition low-profile sneakers, the ideal
+                  everyday choice built with a robust rubber outsole to handle
+                  any weather.
+                </p>
+                <div class="project-tags">
+                  <span>React Js</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://princejetro-e-commerce.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/Frontend-Mentor-E-commerce"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Add more projects following the same structure -->
+
+            <div class="project-card" data-category="web opensource">
+              <div class="project-image">
+                <img
+                  src="images/avatar.png"
+                  alt="Sneakers Interface"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="codecollab">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Avatar: The Last AirBender FanPage</h3>
+                <p class="project-description">
+                  Introducing our latest web application, crafted exclusively
+                  for the passionate fans of Avatar: The Last Airbender (ATLA).
+                  Dive into the ultimate hub for all things ATLA, where
+                  adventure awaits at every click! Embark on a journey through
+                  our interactive map, exploring the rich and diverse world of
+                  the Four Nations. Test your knowledge and bend your mind with
+                  our engaging quiz, designed to challenge even the most
+                  dedicated fans.
+                </p>
+                <div class="project-tags">
+                  <span>React Js</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://princejetro-avatar-fanpage.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/Avatar"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-category="web opensource">
+              <div class="project-image">
+                <img
+                  src="images/fashion.png"
+                  alt="Sneakers Interface"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="codecollab">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Fashion Store</h3>
+                <p class="project-description">
+                  Elevate your style! Discover the latest trends in fashion with
+                  our curated collection of clothing and accessories. Shop
+                  effortlessly through a user-friendly interface. Unleash your
+                  individuality with exclusive promotions. Explore fashion, the
+                  way it's meant to be.
+                </p>
+                <div class="project-tags">
+                  <span>React Js</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://princejetro-fashion-demo.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/fashion"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-category="web opensource">
+              <div class="project-image">
+                <img
+                  src="images/movie.png"
+                  alt="Sneakers Interface"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="codecollab">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Movie Trailer App(Mobile Only)</h3>
+                <p class="project-description">
+                  Embark on a cinematic journey with our React-based Movie
+                  Trailer app, exclusively tailored for mobile users. Immerse
+                  yourself in the world of film trailers on-the-go. With a
+                  mobile-centric design, this app brings the magic of React to
+                  your fingertips. Explore and preview the latest movie trailers
+                  seamlessly, all within the convenience of your mobile device.
+                  Lights, camera, React - the silver screen experience, now in
+                  the palm of your hand!
+                </p>
+                <div class="project-tags">
+                  <span>React Js</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://sylva-x-jetro-movie-app.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/sylva"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card" data-category="web opensource">
+              <div class="project-image">
+                <img
+                  src="images/todo.png"
+                  alt="Sneakers Interface"
+                  loading="lazy"
+                />
+                <div class="project-overlay">
+                  <button class="quick-view" data-project="codecollab">
+                    <i class="fas fa-expand"></i> Quick View
+                  </button>
+                </div>
+              </div>
+              <div class="project-content">
+                <h3>Todo App</h3>
+                <p class="project-description">
+                  This ToDo app, crafted with React, empowers users to
+                  efficiently manage their tasks. Seamlessly add new tasks, mark
+                  them as completed, and effortlessly delete those no longer
+                  needed. With a clean and intuitive interface, this app
+                  simplifies task organization, helping you stay on top of your
+                  to-do list effortlessly.ch allows user for realtime messaging,
+                  image sharing as well as supports reactions on messages.
+                </p>
+                <div class="project-tags">
+                  <span>React Js</span>
+                </div>
+                <div class="project-actions">
+                  <a
+                    href="https://princejetro-todo-app.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary"
+                  >
+                    <i class="fas fa-external-link-alt"></i> Live Demo
+                  </a>
+                  <a
+                    href="https://github.com/PrinceJetro/Todo-app"
+                    target="_blank"
+                    class="btn btn-secondary"
+                  >
+                    <i class="fab fa-github"></i> GitHub
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- ENd projects -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="project-modal">
+      <div class="modal-content">
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="modal-body">
+          <!-- Content will be loaded dynamically -->
+        </div>
+      </div>
+    </div>
+
+    <section id="featured-project" class="featured-project-section">
+      <div class="container">
+        <div class="featured-header">
+          <div class="breadcrumb">
+            <a href="projects.html"
+              ><i class="fas fa-arrow-left"></i> Back to Projects</a
+            >
+          </div>
+          <h1>Tutorial Haven</h1>
+          <p class="subtitle">
+            Bridging education gaps in Nigeria through interactive learning
+          </p>
+          <div class="project-meta">
+            <span class="project-date">Launched: 2025</span>
+            <span class="project-status">Active</span>
+            <a
+              href="https://tutorialhaven.com.ng"
+              target="_blank"
+              class="project-link"
+            >
+              <i class="fas fa-external-link-alt"></i> Visit Platform
+            </a>
+          </div>
+        </div>
+
+        <div class="featured-content">
+          <div class="project-overview">
+            <div class="overview-text">
+              <h2>Project Overview</h2>
+              <p>
+                Tutorial Haven was born out of a desire to make exam preparation
+                more accessible, engaging, and effective for students across
+                Nigeria. Frustrated by the lack of centralized, high-quality
+                resources for JAMB, WAEC, and NECO, I created a platform that
+                blends modern technology with personalized learning support.
+              </p>
+
+              <p>
+                As both founder and lead developer, I designed and built the
+                platform from the ground up. Today, Tutorial Haven serves over
+                250 students across 10+ Nigerian states, helping them prepare
+                confidently for their O-level exams through interactive tools
+                and AI-powered guidance.
+              </p>
+
+              <div class="key-features">
+                <h3>Key Features</h3>
+                <ul>
+                  <li>
+                    <i class="fas fa-check-circle"></i> AI-powered tutoring &
+                    concept explanations
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Timed CBT simulations
+                    based on JAMB format
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Subject-based past
+                    question practice (Theory + Objective)
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Personalized progress
+                    tracking and feedback
+                  </li>
+                  <li>
+                    <i class="fas fa-check-circle"></i> Access to comprehensive,
+                    syllabus-based notes
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="overview-media">
+              <div class="media-container">
+                <img
+                  src="images/th-dashboard.png"
+                  alt="Tutorial Haven Dashboard"
+                  loading="lazy"
+                  class="main-screenshot"
+                />
+                <button class="play-demo" data-video="th-demo.mp4">
+                  <i class="fas fa-play"></i> Play Demo
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-details">
+            <div class="details-tabs">
+              <button class="tab-btn active" data-tab="tech-stack">
+                Tech Stack
+              </button>
+              <button class="tab-btn" data-tab="my-role">My Role</button>
+              <button class="tab-btn" data-tab="impact">Impact</button>
+              <button class="tab-btn" data-tab="gallery">Gallery</button>
+            </div>
+
+            <div class="tab-content active" id="tech-stack">
+              <div class="tech-stack-grid">
+                <div class="tech-category">
+                  <h4><i class="fab fa-react"></i> Frontend</h4>
+                  <ul>
+                    <li>React</li>
+                    <li>Redux for state management (Pending)</li>
+                    <li>React Router for navigation</li>
+                  </ul>
+                </div>
+
+                <div class="tech-category">
+                  <h4><i class="fas fa-server"></i> Backend</h4>
+                  <ul>
+                    <li>Django</li>
+                    <li>Postgress For Database</li>
+                    <li>Supabase For Storage</li>
+                    <li>Vercel For Deployment</li>
+                  </ul>
+                </div>
+
+                <div class="tech-category">
+                  <h4><i class="fas fa-robot"></i> AI Components</h4>
+                  <ul>
+                    <li>Python with API</li>
+                    <li>Custom code analysis models</li>
+                    <li>Natural language processing</li>
+                    <li>Recommendation algorithms</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="my-role">
+              <div class="role-details">
+                <div class="role-aspect">
+                  <h4><i class="fas fa-code"></i> As Lead Developer</h4>
+                  <ul>
+                    <li>
+                      Designed and developed the full-stack infrastructure of
+                      the platform
+                    </li>
+                    <li>
+                      Integrated AI-powered tools for answering students'
+                      questions and recommending study plans
+                    </li>
+                    <li>
+                      Created modules for CBT simulations, note delivery, and
+                      live class integration
+                    </li>
+                    <li>
+                      Led the development of a scalable backend to support
+                      thousands of student users
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="role-aspect">
+                  <h4><i class="fas fa-user-tie"></i> As CEO</h4>
+                  <ul>
+                    <li>
+                      Defined the vision of democratizing access to O-level exam
+                      prep resources
+                    </li>
+                    <li>
+                      Established collaborations with schools and education
+                      influencers across Nigeria
+                    </li>
+                    <li>
+                      Bootstrapped the business with personal funds and support
+                      from early users
+                    </li>
+                    <li>
+                      Recruited and coordinated a small team of tutors and
+                      volunteer content creators
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="role-highlight">
+                  <h4>Key Achievement</h4>
+                  <p>
+                    Grew Tutorial Haven from a single-person idea to an EdTech
+                    platform serving over 250 Nigerian students, with live
+                    classes, AI assistance, and multi-subject coverage — all
+                    built with limited resources and no external funding.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="impact">
+              <div class="impact-stats">
+                <div class="stat-card">
+                  <div class="stat-value">250+</div>
+                  <div class="stat-label">Students Impacted</div>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-value">80%</div>
+                  <div class="stat-label">Completion Rate</div>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-value">10+</div>
+                  <div class="stat-label">Nigerian States</div>
+                </div>
+
+                <div class="stat-card">
+                  <div class="stat-value">15+</div>
+                  <div class="stat-label">Partners</div>
+                </div>
+              </div>
+
+              <div class="testimonials">
+                <h3>What People Say</h3>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p>
+                      "Basically yeah, there are so many thing I literally don’t
+                      get in physics an honestly, I can say I was able to solve
+                      some physics questions well with my full chest. And yeah
+                      kudos to you, for putting much efforts in it ensuring we
+                      take quiz all nights and study. Yeah 🫶 "
+                    </p>
+                  </div>
+                  <div class="testimonial-author">
+                    <img
+                      src="images/testimonials/principal-yusuf.jpg"
+                      alt="Principal Yusuf"
+                    />
+                    <div class="author-info">
+                      <div class="author-name">Tutorial Haven Student</div>
+                      <div class="author-title">Blessing Perpetual</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="testimonial-card">
+                  <div class="testimonial-content">
+                    <p>
+                      "The AI feedback system helped me identify my weaknesses
+                      immediately. I went from beginner to landing my first
+                      developer job in 6 months."
+                    </p>
+                  </div>
+                  <div class="testimonial-author">
+                    <img
+                      src="images/testimonials/student-ade.jpg"
+                      alt="Student Ade"
+                    />
+                    <div class="author-info">
+                      <div class="author-name">Adeola Johnson</div>
+                      <div class="author-title">Tutorial Haven Graduate</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="gallery">
+              <div class="gallery-grid">
+                <div class="gallery-item">
+                  <img
+                    src="images/th-jamb.png"
+                    alt="Tutorial Haven JAMB Interface"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-item">
+                  <img
+                    src="images/ai-playground.png"
+                    alt="Tutorial Haven ai-playground"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-item">
+                  <img
+                    src="images/cbt-timer.png"
+                    alt="Tutorial Haven CBT View"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="gallery-item">
+                  <img
+                    src="images/cbt.png"
+                    alt="Tutorial Haven Teacher CBT"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Video Modal -->
+    <div class="video-modal" id="video-modal">
+      <div class="modal-content">
+        <button class="modal-close">
+          <i class="fas fa-times"></i>
+        </button>
+        <video controls id="project-video">
+          <source src="" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <footer class="main-footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <a href="#" class="logo">Adegbuyi Jephthah</a>
+            <p>Building impactful tech solutions for education and beyond.</p>
+          </div>
+
+          <div class="footer-links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="about.html">About</a></li>
+              <li><a href="projects.html">Projects</a></li>
+              <li><a href="skills.html">Skills</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-social">
+            <h3>Connect</h3>
+            <div class="social-links">
+              <a href="https://github.com/princejetro" aria-label="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://x.com/PrinceJetro123" aria-label="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a
+                href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/"
+                aria-label="LinkedIn"
+                ><i class="fab fa-linkedin-in"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="year"></span> Adegbuyi Jephthah. All rights
+            reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/projects.js"></script>
+  </body>
+</html>
