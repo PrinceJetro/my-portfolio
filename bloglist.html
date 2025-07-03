@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Adegbuyi Jephthah's blog collection, featuring insights on technology, programming, and personal development."
+    />
+    <title>Adegbuyi Jephthah | Blogs</title>
+    <link rel="icon" href="images/profile.jpg" type="image/png" />
+    <link rel="apple-touch-icon" href="images/profile.jpg" type="image/png" />
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Blog Page Styling */
+
+      .blog-page {
+        font-family: "Inter", sans-serif;
+        padding-top: 80px;
+        color: #111827;
+      }
+
+      .hero-section {
+        background: #f9fafb;
+        padding: 3rem 1rem;
+        text-align: center;
+      }
+
+      .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .page-subtitle {
+        font-size: 1.1rem;
+        color: #6b7280;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .blog-grid-section {
+        padding: 3rem 1rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+
+      .blog-card {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      .blog-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .blog-img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .blog-content {
+        padding: 1.5rem;
+      }
+
+      .blog-title {
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .blog-excerpt {
+        font-size: 0.95rem;
+        color: #4b5563;
+        margin-bottom: 1rem;
+      }
+
+      .blog-meta {
+        font-size: 0.85rem;
+        color: #6b7280;
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .blog-meta i {
+        margin-right: 4px;
+        color: #9ca3af;
+      }
+
+      .read-more {
+        color: #2563eb;
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .read-more:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="main-header">
+      <div class="container">
+        <nav class="navbar">
+          <a href="index.html" class="logo">Jephthah<span>.</span></a>
+          <ul class="nav-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="bloglist.html">Blogs</a></li>
+          </ul>
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main class="blog-page">
+      <section class="hero-section">
+        <div class="container">
+          <h1 class="page-title">Latest Blog Posts</h1>
+          <p class="page-subtitle">
+            Insights on technology, software development, and the journey of
+            building Tutorial Haven.
+          </p>
+        </div>
+      </section>
+
+      <section class="blog-grid-section">
+        <div class="container grid">
+          <!-- This -->
+          <div class="blog-card">
+            <img src="blogimages/blog1.png" alt="Blog cover" class="blog-img" />
+            <div class="blog-content">
+              <h2 class="blog-title">
+                What Skills Should a Good Web Developer Have?
+              </h2>
+              <p class="blog-excerpt">
+                A breakdown of the key technical and soft skills every developer
+                needs to thrive in today's job market...
+              </p>
+              <div class="blog-meta">
+                <span><i class="fas fa-calendar-alt"></i> July 3, 2025</span>
+                <span><i class="fas fa-clock"></i> 12 min read</span>
+              </div>
+              <a
+                href="blogs/blog1.html"
+                class="read-more"
+                >Read More &rarr;</a
+              >
+            </div>
+          </div>
+
+          <!-- More.... -->
+        </div>
+      </section>
+    </main>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
