@@ -9,8 +9,14 @@
     />
     <title>Adegbuyi Jephthah | Blogs</title>
     <meta name="author" content="Adegbuyi Jephthah" />
-    <meta name="keywords" content="blog, technology, programming, web development" />
-    <meta name="description" content="Explore the latest blog posts on technology, programming, and web development by Adegbuyi Jephthah." />
+    <meta
+      name="keywords"
+      content="blog, technology, programming, web development"
+    />
+    <meta
+      name="description"
+      content="Explore the latest blog posts on technology, programming, and web development by Adegbuyi Jephthah."
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#ffffff" />
     <link rel="icon" href="images/profile.jpg" type="image/png" />
@@ -157,60 +163,83 @@
       </section>
 
       <section class="blog-grid-section">
-        <div class="container grid">
-          <!-- This -->
-          <div class="blog-card">
-            <img src="blogimages/blog1.png" alt="Blog cover" class="blog-img" />
-            <div class="blog-content">
-              <h2 class="blog-title">
-                What Skills Should a Good Web Developer Have?
-              </h2>
-              <p class="blog-excerpt">
-                A breakdown of the key technical and soft skills every developer
-                needs to thrive in today's job market...
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-calendar-alt"></i> July 3, 2025</span>
-                <span><i class="fas fa-clock"></i> 12 min read</span>
-              </div>
-              <a href="blogs/blog1.html" class="read-more">Read More &rarr;</a>
-            </div>
-          </div>
-
-          <!-- More.... -->
-          <div class="blog-card">
-            <img
-              src="blogimages/blog2.png"
-              alt="Web Hosting Cover"
-              class="blog-img"
-            />
-            <div class="blog-content">
-              <h2 class="blog-title">
-                What Is Web Hosting in Web Development?
-              </h2>
-              <p class="blog-excerpt">
-                Understanding web hosting is crucial for deploying and
-                maintaining websites. This article breaks down how it works, the
-                types, and what developers should know...
-              </p>
-              <div class="blog-meta">
-                <span><i class="fas fa-calendar-alt"></i> July 3, 2025</span>
-                <span><i class="fas fa-clock"></i> 10 min read</span>
-              </div>
-              <a
-                href="blogs/blog2.html"
-                class="read-more"
-                >Read More &rarr;</a
-              >
-            </div>
-          </div>
-
-
+        <div class="container grid blog-container">
 
         </div>
       </section>
     </main>
 
     <script src="js/main.js"></script>
+    <script>
+      // blog data array
+const blogPosts = [
+  {
+    id: 1,
+    imgSrc: "blogimages/blog1.png",
+    imgAlt: "Blog cover",
+    title: "What Skills Should a Good Web Developer Have?",
+    excerpt: "A breakdown of the key technical and soft skills every developer needs to thrive in today's job market...",
+    date: "July 3, 2025",
+    readTime: "12 min",
+    url: "blogs/blog1.html"
+  },
+  {
+    id: 2,
+    imgSrc: "blogimages/blog2.png",
+    imgAlt: "Web Hosting Cover",
+    title: "What Is Web Hosting in Web Development?",
+    excerpt: "Understanding web hosting is crucial for deploying and maintaining websites. This article breaks down how it works, the types, and what developers should know...",
+    date: "July 3, 2025",
+    readTime: "10 min",
+    url: "blogs/blog2.html"
+  },
+  {
+    id: 3,
+    imgSrc: "blogimages/blog3.png",
+    imgAlt: "Front-End Development Cover",
+    title: "What is Front-End Development? The Complete Guide",
+    excerpt: "Learn what front-end development is all about, the core technologies it involves, and how it shapes the user experience on the web...",
+    date: "July 3, 2025",
+    readTime: "15 min",
+    url: "blogs/blog3.html"
+  },
+  {
+    id: 4,
+    imgSrc: "blogimages/blog4.png",
+    imgAlt: "Backend Development Cover",
+    title: "What Is Backend in Web Development? (Explained for Beginners)",
+    excerpt: "Get a beginner-friendly explanation of what backend development is, how it works behind the scenes, and the tools developers use to build powerful web applications...",
+    date: "July 3, 2025",
+    readTime: "8 min",
+    url: "blogs/blog4.html"
+  }
+];
+
+// Function to generate blog cards
+function generateBlogCards() {
+  const container = document.querySelector('.blog-container'); // Make sure you have a container element
+  
+  blogPosts.forEach(post => {
+    const card = document.createElement('div');
+    card.className = 'blog-card';
+    card.innerHTML = `
+      <img src="${post.imgSrc}" alt="${post.imgAlt}" class="blog-img" />
+      <div class="blog-content">
+        <h2 class="blog-title">${post.title}</h2>
+        <p class="blog-excerpt">${post.excerpt}</p>
+        <div class="blog-meta">
+          <span><i class="fas fa-calendar-alt"></i> ${post.date}</span>
+          <span><i class="fas fa-clock"></i> ${post.readTime} read</span>
+        </div>
+        <a href="${post.url}" class="read-more">Read More &rarr;</a>
+      </div>
+    `;
+    container.appendChild(card);
+  });
+}
+
+// Call the function when the DOM is loaded
+document.addEventListener('DOMContentLoaded', generateBlogCards);
+    </script>
   </body>
 </html>
