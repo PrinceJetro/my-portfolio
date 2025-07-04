@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Understand the difference between HTTP and HTTPS, their roles in web security, and why HTTPS is crucial in modern web development." />
+  <title>Define the Difference Between HTTP and HTTPS | Jephthah Adegbuyi</title>
+  <link rel="icon" href="../blogimages/blog5.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../blogimages/blog5.png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">HTTP vs HTTPS: What's the Difference and Why It Matters</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 4, 2025</span>
+        <span><i class="fas fa-clock"></i> 6 min read</span>
+        <span class="article-tags">#WebSecurity #HTTP #HTTPS #Beginners</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    <div class="intro-box">
+      <p>Imagine sending a postcard (HTTP) vs. a sealed envelope (HTTPS) through the mail. One anyone can read, the other is private. That's the core difference!</p>
+    </div>
+
+    <h2>1. The Basic Difference</h2>
+    <div class="simple-comparison">
+      <div class="http">
+        <h3>HTTP <span class="badge insecure">Not Secure</span></h3>
+        <p>HyperText Transfer Protocol</p>
+        <ul>
+          <li>🔓 Data sent in plain text</li>
+          <li>📡 Like a public radio broadcast</li>
+          <li>🚫 No encryption</li>
+        </ul>
+      </div>
+      <div class="https">
+        <h3>HTTPS <span class="badge secure">Secure</span></h3>
+        <p>HyperText Transfer Protocol Secure</p>
+        <ul>
+          <li>🔐 Encrypted connection</li>
+          <li>📦 Like a bank vault delivery</li>
+          <li>✅ Uses SSL/TLS certificates</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="visual-example">
+      <h3>Real-Life Example:</h3>
+      <p>When you log in to a website:</p>
+      <div class="http-flow">
+        <p><strong>HTTP:</strong> Username/password visible to hackers</p>
+        <p>👩💻 → 🔍 HACKER CAN SEE → 🖥️</p>
+      </div>
+      <div class="https-flow">
+        <p><strong>HTTPS:</strong> Username/password scrambled</p>
+        <p>👩💻 → 🔒 ENCRYPTED DATA → 🖥️</p>
+      </div>
+    </div>
+
+    <h2>2. How HTTPS Works (Simplified)</h2>
+    <ol class="steps">
+      <li>Your browser asks for a secure connection</li>
+      <li>Website sends its SSL certificate (ID card)</li>
+      <li>Browser verifies the certificate</li>
+      <li>They establish an encrypted "tunnel"</li>
+      <li>All data is scrambled during transfer</li>
+    </ol>
+
+    <div class="lock-icon">
+      <i class="fas fa-lock"></i>
+      <p>That's the padlock icon you see in browser addresses!</p>
+    </div>
+
+    <h2>3. Why HTTPS Matters</h2>
+    <div class="benefits">
+      <div class="benefit-card">
+        <h3>🔒 Security</h3>
+        <p>Protects passwords, credit cards, and personal data</p>
+      </div>
+      <div class="benefit-card">
+        <h3>🛡️ Privacy</h3>
+        <p>Prevents snooping on your browsing activity</p>
+      </div>
+      <div class="benefit-card">
+        <h3>📈 SEO Boost</h3>
+        <p>Google ranks HTTPS sites higher in search results</p>
+      </div>
+      <div class="benefit-card">
+        <h3>🔮 Future Proof</h3>
+        <p>Modern web features require HTTPS</p>
+      </div>
+    </div>
+
+    <h2>4. How to Check if a Site Uses HTTPS</h2>
+    <ul class="checklist">
+      <li>Look for <strong>https://</strong> in the URL</li>
+      <li>Check for a <strong>padlock icon</strong> left of the address</li>
+      <li>Modern browsers show <strong>"Not Secure"</strong> warnings for HTTP</li>
+    </ul>
+
+    <div class="warning-box">
+      <h3>⚠️ Watch Out!</h3>
+      <p>Some fake sites use HTTPS but are still scams. Always check:</p>
+      <ul>
+        <li>Is the domain name correct? (amaz0n.com vs amazon.com)</li>
+        <li>Does the padlock have a valid organization name?</li>
+      </ul>
+    </div>
+
+    <h2>5. HTTP vs HTTPS Comparison Table</h2>
+    <table class="comparison-table">
+      <tr>
+        <th>Feature</th>
+        <th>HTTP</th>
+        <th>HTTPS</th>
+      </tr>
+      <tr>
+        <td>Security</td>
+        <td>❌ None</td>
+        <td>✅ Encrypted</td>
+      </tr>
+      <tr>
+        <td>Port</td>
+        <td>80</td>
+        <td>443</td>
+      </tr>
+      <tr>
+        <td>Speed</td>
+        <td>Marginally faster</td>
+        <td>Nearly equal with HTTP/2</td>
+      </tr>
+      <tr>
+        <td>SEO Impact</td>
+        <td>Penalized</td>
+        <td>Boosted</td>
+      </tr>
+      <tr>
+        <td>Required for</td>
+        <td>-</td>
+        <td>Login pages, payments, PWAs</td>
+      </tr>
+    </table>
+
+    <div class="pro-tip">
+      <h3>💡 For Website Owners</h3>
+      <p>Getting HTTPS is easier than ever:</p>
+      <ol>
+        <li>Get an SSL certificate (many hosts offer free ones)</li>
+        <li>Install it on your server</li>
+        <li>Set up automatic redirects from HTTP to HTTPS</li>
+      </ol>
+      <p>Services like <a href="#">Let's Encrypt</a> provide free certificates!</p>
+    </div>
+
+    <div class="myth-buster">
+      <h3>🚫 Myth vs. Fact</h3>
+      <p><strong>Myth:</strong> "HTTPS makes my site slow"</p>
+      <p><strong>Fact:</strong> Modern HTTPS is actually faster thanks to HTTP/2!</p>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Now you know why that little padlock matters! <a href="../security-guide.html">Learn more about web security</a>.</p>
+      <div class="share-buttons">
+        <a href="#" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="share"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
