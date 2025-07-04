@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Explore why the <!DOCTYPE html> declaration is still important in HTML5, what it does, and what happens if you leave it out." />
+<title>Do You Really Need &lt;!DOCTYPE html&gt; in HTML5? | Jephthah Adegbuyi</title>
+
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/blog6.png" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/blog6.png" />
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Do You Really Need <!DOCTYPE html> in HTML5?" />
+<meta property="og:description" content="Explore why the <!DOCTYPE html> declaration is still important in HTML5, what it does, and what happens if you leave it out." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/blog6.png" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/doctype-in-html5.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta property="article:author" content="https://www.princejetro.com.ng/about.html" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://www.princejetro.com.ng/blogimages/blog6.png" /> 
+    <meta name="twitter:site" content="@princejetro123" /> 
+    <meta name="twitter:creator" content="@princejetro123" /> 
+
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Do You Really Need &lt;!DOCTYPE html&gt; in HTML5?</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 4, 2025</span>
+        <span><i class="fas fa-clock"></i> 5 min read</span>
+        <span class="article-tags">#HTML5 #WebDev #Beginners</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    <div class="intro-box">
+      <p><strong>Short answer:</strong> Yes, your HTML5 will probably work without it... but you <em>really</em> should include it! Here's why:</p>
+    </div>
+
+    <h2>1. What Happens Without &lt;!DOCTYPE html&gt;</h2>
+    <div class="outcome-box">
+      <div class="outcome good">
+        <h3>✅ The Good</h3>
+        <ul>
+          <li>Modern browsers will <strong>usually</strong> render HTML5 correctly</li>
+          <li>Basic pages may look fine</li>
+        </ul>
+      </div>
+      <div class="outcome bad">
+        <h3>❌ The Bad</h3>
+        <ul>
+          <li>Browsers switch to <strong>"quirks mode"</strong> (old bug-compatible rendering)</li>
+          <li>Your layout/style may break unexpectedly</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="browser-demo">
+      <h3>Browser Behavior Comparison</h3>
+      <table>
+        <tr>
+          <th>Browser</th>
+          <th>Without DOCTYPE</th>
+          <th>With DOCTYPE</th>
+        </tr>
+        <tr>
+          <td>Chrome</td>
+          <td>Quirks mode</td>
+          <td>Standards mode</td>
+        </tr>
+        <tr>
+          <td>Firefox</td>
+          <td>Partial quirks</td>
+          <td>Standards mode</td>
+        </tr>
+        <tr>
+          <td>Safari</td>
+          <td>Quirks mode</td>
+          <td>Standards mode</td>
+        </tr>
+      </table>
+    </div>
+
+    <h2>2. What Exactly Does &lt;!DOCTYPE html&gt; Do?</h2>
+    <ul class="function-list">
+      <li>📢 <strong>Declares</strong> "This is an HTML5 document"</li>
+      <li>🚦 <strong>Triggers</strong> standards mode rendering</li>
+      <li>🛡️ <strong>Prevents</strong> browser quirks mode</li>
+      <li>⚡ <strong>Ensures</strong> consistent behavior across browsers</li>
+    </ul>
+
+    <div class="code-example">
+      <h3>The Simplest Valid HTML5 Document</h3>
+      <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;My Page&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;Hello World!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <h2>3. Real-World Examples Where It Matters</h2>
+    <div class="case-study">
+      <div class="case">
+        <h3>📏 Box Model Differences</h3>
+        <p>In quirks mode, padding/borders may be calculated differently, breaking layouts.</p>
+      </div>
+      <div class="case">
+        <h3>📱 Mobile Rendering</h3>
+        <p>Some mobile browsers apply different viewport defaults without DOCTYPE.</p>
+      </div>
+      <div class="case">
+        <h3>🎨 CSS Issues</h3>
+        <p>Certain CSS properties (like height: 100%) behave unpredictably in quirks mode.</p>
+      </div>
+    </div>
+
+    <div class="pro-tip">
+      <h3>💡 Pro Tip: Always Include It!</h3>
+      <p>Just memorize this simple starter template:</p>
+      <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;Document&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  <!-- Your content -->
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    </div>
+
+    <div class="myth-buster">
+      <h3>🚫 Myth vs. Fact</h3>
+      <p><strong>Myth:</strong> "DOCTYPE is only needed for validation"</p>
+      <p><strong>Fact:</strong> It directly affects how browsers render your page!</p>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Now you know why that one line matters! <a href="../html-guide.html">Explore our HTML beginner's guide</a>.</p>
+      <div class="share-buttons">
+        <a href="#" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="share"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
