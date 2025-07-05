@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/blog8.png" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/blog8.png" />
+
+<meta name="description" content="Git and GitHub are not the same thing. This beginner-friendly guide explains the core differences, how each works, and when to use them in development workflows." />
+<title>Git vs GitHub: What's the Difference? (Explained for Beginners) | Jephthah Adegbuyi</title>
+
+<!-- Optional Open Graph Tags -->
+<meta property="og:title" content="Git vs GitHub: What's the Difference? (Explained for Beginners)" />
+<meta property="og:description" content="Git and GitHub are not the same thing. This beginner-friendly guide explains the core differences, how each works, and when to use them in development workflows." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/blog8.png" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/git-vs-github.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="author" content="Adegbuyi Jephthah" />
+<meta name="keywords" content="Git, GitHub, version control, software development, programming, beginner guide" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Git vs GitHub: What's the Difference? (Explained for Beginners)</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 6, 2025</span>
+        <span><i class="fas fa-clock"></i> 5 min read</span>
+        <span class="article-tags">#Git #GitHub #VersionControl #Coding</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    <div class="intro-box">
+      <p><strong>Think of Git as a time machine for your code</strong>, and GitHub as a social network where developers share these time machines. Here's the full breakdown:</p>
+    </div>
+
+    <div class="quick-comparison">
+      <div class="git-card">
+        <h2>Git <span class="badge tool">Tool</span></h2>
+        <p><em>Version control system</em></p>
+        <ul>
+          <li>📦 Runs on your computer</li>
+          <li>⏳ Tracks code changes locally</li>
+          <li>🔧 Command-line tool</li>
+          <li>🛠️ Created by Linus Torvalds (2005)</li>
+        </ul>
+      </div>
+      
+      <div class="github-card">
+        <h2>GitHub <span class="badge service">Service</span></h2>
+        <p><em>Cloud platform for Git</em></p>
+        <ul>
+          <li>☁️ Hosted online</li>
+          <li>🤝 Enables collaboration</li>
+          <li>🌐 Web interface + features</li>
+          <li>💻 Owned by Microsoft (2018)</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>1. Git Explained (The Time Machine)</h2>
+    <div class="analogy">
+      <p>Imagine Git as a super-powered "Save" system for your code:</p>
+      <ul>
+        <li>📌 <strong>Snapshots:</strong> Takes pictures of your code at any moment</li>
+        <li>↩️ <strong>Rewind:</strong> Revert to any previous version</li>
+        <li>🌿 <strong>Branches:</strong> Test new ideas without breaking working code</li>
+      </ul>
+      <pre><code class="language-bash"># Basic Git commands
+git init        # Start tracking a project
+git add .       # Stage changes
+git commit -m "Message"  # Save a snapshot</code></pre>
+    </div>
+
+    <h2>2. GitHub Explained (The Social Network)</h2>
+    <div class="analogy">
+      <p>GitHub is like Facebook for code projects:</p>
+      <ul>
+        <li>🚀 <strong>Hosting:</strong> Stores your Git projects online</li>
+        <li>👥 <strong>Collaboration:</strong> Multiple people can work together</li>
+        <li>🔍 <strong>Discovery:</strong> Find and contribute to open-source projects</li>
+        <li>🛠️ <strong>Extras:</strong> Issues, pull requests, wikis, actions</li>
+      </ul>
+      <img src="github-screenshot.png" alt="GitHub interface showing repositories" class="img-fluid">
+    </div>
+
+    <h2>3. Key Differences</h2>
+    <table class="differences-table">
+      <tr>
+        <th></th>
+        <th>Git</th>
+        <th>GitHub</th>
+      </tr>
+      <tr>
+        <td><strong>Type</strong></td>
+        <td>Software</td>
+        <td>Website</td>
+      </tr>
+      <tr>
+        <td><strong>Location</strong></td>
+        <td>Your computer</td>
+        <td>The cloud</td>
+      </tr>
+      <tr>
+        <td><strong>Main Use</strong></td>
+        <td>Version control</td>
+        <td>Code sharing</td>
+      </tr>
+      <tr>
+        <td><strong>Cost</strong></td>
+        <td>Free</td>
+        <td>Free + paid plans</td>
+      </tr>
+      <tr>
+        <td><strong>Alternatives</strong></td>
+        <td>Mercurial, SVN</td>
+        <td>GitLab, Bitbucket</td>
+      </tr>
+    </table>
+
+    <h2>4. How They Work Together</h2>
+    <div class="workflow">
+      <ol>
+        <li>You create a project with <code>git init</code></li>
+        <li>Make changes and commit them with Git</li>
+        <li>Push your code to GitHub with <code>git push</code></li>
+        <li>Others clone it with <code>git clone</code></li>
+        <li>Team collaborates via GitHub's interface</li>
+      </ol>
+      <div class="visual-diagram">
+        <p>Local Git → Pushes to → GitHub → Pulled by → Team Members</p>
+      </div>
+    </div>
+
+    <h2>5. When Would You Use Just Git?</h2>
+    <ul class="use-cases">
+      <li>📚 <strong>Learning version control</strong> (no need for sharing)</li>
+      <li>🔒 <strong>Private local projects</strong> (not ready to share)</li>
+      <li>💾 <strong>Simple version tracking</strong> (single developer)</li>
+    </ul>
+
+    <h2>6. When You Need GitHub</h2>
+    <ul class="use-cases">
+      <li>👥 <strong>Team collaboration</strong> (multiple developers)</li>
+      <li>🌎 <strong>Open-source projects</strong> (community contributions)</li>
+      <li>🚀 <strong>Code portfolio</strong> (show your work to employers)</li>
+      <li>⚙️ <strong>CI/CD pipelines</strong> (automatic testing/deployment)</li>
+    </ul>
+
+    <div class="pro-tip">
+      <h3>💡 Beginner Tip</h3>
+      <p>Start by learning Git basics on your computer, then create a free GitHub account to:</p>
+      <ol>
+        <li>Back up your code</li>
+        <li>Contribute to small open-source projects</li>
+        <li>Showcase your learning journey</li>
+      </ol>
+    </div>
+
+    <div class="myth-buster">
+      <h3>🚫 Myth vs. Fact</h3>
+      <p><strong>Myth:</strong> "Git and GitHub are the same thing"</p>
+      <p><strong>Fact:</strong> Git is the tool, GitHub is a service that uses Git - like how email (Git) is different from Gmail (GitHub)</p>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Ready to start? <a href="../git-tutorial.html">Learn Git in 1 hour</a> or <a href="https://github.com" target="_blank">create your GitHub account</a>.</p>
+      <div class="share-buttons">
+        <a href="#" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#" class="share"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
