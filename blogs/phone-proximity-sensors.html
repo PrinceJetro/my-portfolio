@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/blog11.png" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/blog11.png" />
+
+<meta name="description" content="Discover how phone proximity sensors detect your face and turn off the screen during calls to prevent accidental touches and save battery." />
+<title>Phone Proximity Sensors: Why Your Screen Turns Off During Calls | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags -->
+<meta property="og:title" content="Phone Proximity Sensors: Why Your Screen Turns Off During Calls" />
+<meta property="og:description" content="Discover how phone proximity sensors detect your face and turn off the screen during calls to prevent accidental touches and save battery." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/blog11.png" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/phone-proximity-sensors.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+  <section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Phone Proximity Sensors: Why Your Screen Turns Off During Calls</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 9, 2025</span>
+        <span><i class="fas fa-clock"></i> 5 min read</span>
+        <span class="article-tags">#TechExplained #Smartphones #Sensors</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    <div class="intro-box">
+      <p><strong>That magical moment when your phone "knows" it's at your ear</strong> isn't psychic ability - it's a clever little sensor working behind the scenes. Here's how this invisible tech protects your face and saves battery.</p>
+    </div>
+
+    <h2>1. The Proximity Sensor Demystified</h2>
+    <div class="sensor-breakdown">
+      <div class="sensor-part">
+        <h3>📍 Location</h3>
+        <p>Hidden near your phone's earpiece (usually under the screen)</p>
+      </div>
+      <div class="sensor-part">
+        <h3>🔧 Components</h3>
+        <ul>
+          <li>Infrared (IR) LED emitter</li>
+          <li>Light detector</li>
+          <li>Control circuitry</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>2. How It Works Step-by-Step</h2>
+    <div class="workflow">
+      <ol>
+        <li><strong>IR Beam Fires:</strong> The LED emits invisible infrared light</li>
+        <li><strong>Object Detection:</strong> When your head approaches:
+          <ul>
+            <li>Light reflects off your ear/face</li>
+            <li>Detector notices the reflected light</li>
+          </ul>
+        </li>
+        <li><strong>Signal Sent:</strong> Sensor tells processor: "Something's close!"</li>
+        <li><strong>Screen Off:</strong> Display powers down within milliseconds</li>
+      </ol>
+      <div class="visual-diagram">
+        <p>📱 Phone → 🔦 IR Beam → 👂 Ear → 🌈 Reflection → 📡 Detector → 🖥️ Screen Off</p>
+      </div>
+    </div>
+
+    <h2>3. Why This Matters</h2>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <h3>👂 Face Protection</h3>
+        <p>Prevents accidental cheek-taps (muting calls, launching apps)</p>
+      </div>
+      <div class="benefit-card">
+        <h3>🔋 Battery Saving</h3>
+        <p>Display consumes ~40% of power - turning it off extends talk time</p>
+      </div>
+      <div class="benefit-card">
+        <h3>💡 Screen Safety</h3>
+        <p>Reduces burn-in risk during long calls</p>
+      </div>
+    </div>
+
+    <h2>4. Cool Sensor Variations</h2>
+    <table class="sensor-types">
+      <tr>
+        <th>Type</th>
+        <th>How It Works</th>
+        <th>Used In</th>
+      </tr>
+      <tr>
+        <td>Traditional IR</td>
+        <td>Reflected infrared light</td>
+        <td>Most smartphones</td>
+      </tr>
+      <tr>
+        <td>Ultrasonic</td>
+        <td>Sound wave reflection</td>
+        <td>Some Samsung phones</td>
+      </tr>
+      <tr>
+        <td>Time-of-Flight</td>
+        <td>Light pulse timing</td>
+        <td>High-end devices</td>
+      </tr>
+    </table>
+
+    <div class="troubleshooting">
+      <h3>⚠️ Common Issues & Fixes</h3>
+      <ul>
+        <li><strong>Screen stays on:</strong> Clean sensor area (dirt blocks IR)</li>
+        <li><strong>Screen won't wake:</strong> Restart phone (software glitch)</li>
+        <li><strong>Inconsistent behavior:</strong> Check for screen protector interference</li>
+      </ul>
+    </div>
+
+    <div class="tech-evolution">
+      <h3>📡 Beyond Phone Calls</h3>
+      <p>Modern uses of proximity sensors:</p>
+      <ul>
+        <li>Auto-rotate screen lock in pockets</li>
+        <li>Wake-on-approach features</li>
+        <li>Gesture controls (wave to silence)</li>
+      </ul>
+    </div>
+
+    <div class="pro-tip">
+      <h3>💡 Test Your Sensor</h3>
+      <p>Try this developer trick:</p>
+      <ol>
+        <li>Dial <code>*#*#7378423#*#*</code> (Sony) or use phone testing apps</li>
+        <li>Navigate to "Service Tests"</li>
+        <li>Select "Proximity Sensor"</li>
+        <li>Wave your hand - should show distance changes</li>
+      </ol>
+    </div>
+
+    <div class="myth-buster">
+      <h3>🚫 Myth vs. Fact</h3>
+      <p><strong>Myth:</strong> "The screen turns off because it 'sees' darkness"</p>
+      <p><strong>Fact:</strong> It's active detection - works even in total darkness!</p>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+
+  </section>
+</main>  <script src="../js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
