@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/blog12.png" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/blog12.png" />
+
+<meta name="description" content="Understand what CORS is, why browsers block certain cross‑origin requests, and practical ways developers can fix CORS errors in their web apps." />
+<title>CORS Explained: Why Your Browser Blocks Some Requests | Jephthah Adegbuyi</title>
+
+<!-- Open Graph (Facebook, LinkedIn, etc.) -->
+<meta property="og:title" content="CORS Explained: Why Your Browser Blocks Some Requests" />
+<meta property="og:description" content="Understand what CORS is, why browsers block certain cross‑origin requests, and practical ways developers can fix CORS errors in their web apps." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/blog12.png" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/cors-explained.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+  <main class="blog-article-page">
+  <section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">CORS Explained: Why Your Browser Blocks Some Requests</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 15, 2025</span>
+        <span><i class="fas fa-clock"></i> 7 min read</span>
+        <span class="article-tags">#WebSecurity #APIs #WebDev #CORS</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    <div class="intro-box">
+      <p><strong>CORS is like a bouncer for your browser</strong> - deciding which external websites are allowed to talk to each other. It's not an error, but a vital security feature protecting you from malicious sites.</p>
+    </div>
+
+    <h2>1. The Core Problem CORS Solves</h2>
+    <div class="problem-box">
+      <p>Without CORS, any website could:</p>
+      <ul>
+        <li>📨 Read your emails from another tab</li>
+        <li>💳 Access your banking session</li>
+        <li>🔒 Make requests with your saved cookies</li>
+      </ul>
+      <p><strong>The Same-Origin Policy</strong> (CORS's foundation) prevents this by default.</p>
+    </div>
+
+    <h2>2. How CORS Works Step-by-Step</h2>
+    <div class="workflow">
+      <div class="step">
+        <span class="step-number">1</span>
+        <h3>Browser Makes a "Preflight" Request</h3>
+        <p>For sensitive requests, the browser first asks:</p>
+        <pre><code class="language-http">OPTIONS /api/data HTTP/1.1
+Origin: https://your-site.com
+Access-Control-Request-Method: POST
+Access-Control-Request-Headers: Content-Type</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">2</span>
+        <h3>Server Responds with Permissions</h3>
+        <pre><code class="language-http">HTTP/1.1 204 No Content
+Access-Control-Allow-Origin: https://your-site.com
+Access-Control-Allow-Methods: POST, GET
+Access-Control-Allow-Headers: Content-Type</code></pre>
+      </div>
+      <div class="step">
+        <span class="step-number">3</span>
+        <h3>Browser Allows/Blocks Request</h3>
+        <p>Compares server rules with request details</p>
+      </div>
+    </div>
+
+    <h2>3. Common CORS Scenarios</h2>
+    <div class="scenarios">
+      <div class="scenario-card good">
+        <h3>✅ Simple Requests (Allowed)</h3>
+        <ul>
+          <li>GET requests with standard headers</li>
+          <li>Images/fonts from CDNs</li>
+          <li>Public API endpoints</li>
+        </ul>
+      </div>
+      <div class="scenario-card bad">
+        <h3>❌ Blocked Requests</h3>
+        <ul>
+          <li>POST/PUT/DELETE to another domain</li>
+          <li>Custom headers like Authorization</li>
+          <li>Credentials/cookies sent cross-origin</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>4. Fixing CORS Issues</h2>
+    <table class="solutions-table">
+      <tr>
+        <th>If You're...</th>
+        <th>Solution</th>
+      </tr>
+      <tr>
+        <td><strong>Frontend Developer</strong></td>
+        <td>Use a proxy server or modify API requests</td>
+      </tr>
+      <tr>
+        <td><strong>Backend Developer</strong></td>
+        <td>Configure server headers:
+          <pre><code class="language-javascript">// Express.js example
+app.use(cors({
+  origin: 'https://your-client.com',
+  methods: ['GET','POST']
+}));</code></pre>
+        </td>
+      </tr>
+      <tr>
+        <td><strong>API Consumer</strong></td>
+        <td>Check for CORS-friendly alternatives (JSONP for GETs)</td>
+      </tr>
+    </table>
+
+    <h2>5. CORS Headers Cheat Sheet</h2>
+    <div class="headers-list">
+      <div class="header-card">
+        <h3>From Server</h3>
+        <ul>
+          <li><code>Access-Control-Allow-Origin</code>: Which sites can access</li>
+          <li><code>Access-Control-Allow-Methods</code>: Allowed HTTP methods</li>
+          <li><code>Access-Control-Allow-Headers</code>: Permitted request headers</li>
+        </ul>
+      </div>
+      <div class="header-card">
+        <h3>From Client</h3>
+        <ul>
+          <li><code>Origin</code>: Shows where request came from</li>
+          <li><code>Access-Control-Request-Method</code>: Asks permission for method</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pro-tip">
+      <h3>💡 Development Workaround</h3>
+      <p>Temporarily disable CORS checks in Chrome (for testing only!):</p>
+      <pre><code class="language-bash"># Mac/Linux
+google-chrome --disable-web-security --user-data-dir=/tmp/chrome-test
+
+# Windows
+chrome.exe --disable-web-security --user-data-dir="C:/temp"</code></pre>
+    </div>
+
+    <div class="myth-buster">
+      <h3>🚫 Myth vs. Fact</h3>
+      <p><strong>Myth:</strong> "CORS is an API restriction"</p>
+      <p><strong>Fact:</strong> It's purely browser-enforced - APIs receive requests fine!</p>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
