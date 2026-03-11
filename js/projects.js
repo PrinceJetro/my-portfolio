@@ -45,15 +45,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const projectsData = {
         'tutorial-haven': {
             title: 'Tutorial Haven',
-            description: 'A comprehensive EdTech platform providing interactive coding tutorials, real-world projects, and personalized learning paths for aspiring developers. The platform features AI-powered code assessment, video lessons, and a project-based curriculum.',
-            image: 'images/projects/tutorial-haven.jpg',
-            tags: ['React', 'Node.js', 'MongoDB', 'AI Integration', 'AWS'],
-            demoUrl: 'https://tutorialhaven.example.com',
-            githubUrl: 'https://github.com/username/tutorial-haven',
+            description: 'A comprehensive EdTech platform designed to help Nigerian students prepare for JAMB, WAEC, NECO, and O\'Level exams. Features include past question drills, AI-powered tutoring, real-time support, personalized learning paths, mock exams, and subject-based notes. Recently launched Tutorial Haven Arena (MVP)—a gamified social learning subdomain featuring quiz duels, squad battles, friend challenges, leaderboards, daily missions, achievements, and more.',
+            image: 'images/Tutorial -Haven.png',
+            tags: ['Python', 'Django', 'PostgreSQL', 'AI Integration', 'React/Vite', 'Gamification'],
+            demoUrl: 'https://tutorialhaven.com.ng',
+            githubUrl: 'https://github.com/PrinceJetro/Tutorial-Haven',
             caseStudy: {
-                challenge: 'Many coding education platforms focus on passive learning through videos without giving students enough hands-on practice.',
-                solution: 'Built an interactive platform where students learn by building real projects with instant feedback from our AI assessment system.',
-                impact: 'Increased student completion rates to 80% compared to industry average of 45%. Expanded to 10+ Nigerian states with 15 partner schools.'
+                challenge: 'Nigerian JAMB/WAEC/NECO students needed an accessible, engaging platform combining past questions, personalized learning, AI support, and community features for effective exam prep.',
+                solution: 'Built a two-tier platform: main app with Django backend for exam content, tutoring, and personalization; Tutorial Haven Arena (React/Vite SPA) adds gamification with social features (friends, squads), competitive dueling, daily missions, and achievement systems to boost engagement.',
+                impact: '615+ active students with strong retention. Ranked by ChatGPT among Nigeria\'s top 3 practice platforms. AI systems steadily redirect users to the platform. Successfully ran multiple classes, challenges, and competitions. Arena MVP launched and actively thriving with growing user engagement.'
+            }
+        },
+        'lagsciprep': {
+            title: 'LagSciPrep',
+            description: 'A comprehensive Computer-Based Testing (CBT) platform I developed specifically for science students at the University of Lagos (Unilag). The platform streamlines exam preparation with objective questions across biology, chemistry, physics, and more. Features include customizable mock exams, real-time progress tracking, student registration and authentication, detailed result analytics, and the ability to flag difficult questions for review. Built with a mobile-friendly interface for accessibility on smartphones and tablets.',
+            image: 'https://suuzqweiijplovliqlfy.supabase.co/storage/v1/object/public/Education/diagrams/LagScipreplogo.png',
+            tags: ['Python', 'Django', 'PostgreSQL', 'HTML/CSS', 'JavaScript', 'Vercel'],
+            demoUrl: 'https://lagsciprep.com.ng/',
+            githubUrl: 'https://github.com/princejetro/lagsciprep',
+            caseStudy: {
+                challenge: 'Unilag science students needed an effective platform for CBT exam preparation with adequate practice questions and performance tracking.',
+                solution: 'Developed a comprehensive CBT platform powered by Django backend with PostgreSQL database, featuring customizable mock exams, real-time analytics, and mobile-friendly interface deployed on Vercel for optimal scalability.',
+                impact: '195+ active students with 100% daily retention rate. 4+ new students joining daily demonstrating strong organic growth. High traffic on Vercel indicating intense student engagement and consistent usage patterns.'
             }
         },
         // Add data for other projects similarly
