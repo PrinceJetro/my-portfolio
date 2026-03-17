@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How Tutorial Haven's registration system evolved from a multi-flow architecture serving schools, tutors, and students to a streamlined approach—and what we learned along the way." />
+    <title>From Vision to Iteration: The Evolution of Our User Registration Flow | Jephthah Adegbuyi</title>
+    <link rel="icon" href="../blogimages/blog16.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../blogimages/blog16.png" />
+    <meta property="og:title" content="From Vision to Iteration: The Evolution of Our User Registration Flow" />
+    <meta property="og:description" content="How Tutorial Haven's registration system evolved from a multi-flow architecture serving schools, tutors, and students to a streamlined approach—and what we learned along the way." />
+    <meta property="og:image" content="https://www.princejetro.com.ng/blogimages/blog16.png" /> 
+    <meta property="og:url" content="https://www.princejetro.com.ng/blogs/evolution-of-user-registration-flow.html" /> 
+    <meta property="og:type" content="article" /> 
+    <meta property="og:site_name" content="Jephthah Adegbuyi" />
+    <meta property="article:author" content="https://www.princejetro.com.ng/about.html" /> 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="From Vision to Iteration: The Evolution of Our User Registration Flow" />
+    <meta name="twitter:description" content="How Tutorial Haven's registration system evolved from a multi-flow architecture serving schools, tutors, and students to a streamlined approach—and what we learned along the way." />
+    <meta name="twitter:image" content="https://www.princejetro.com.ng/blogimages/blog16.png" /> 
+    <meta name="twitter:site" content="@princejetro123" /> 
+    <meta name="twitter:creator" content="@princejetro123" /> 
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  color: #2d3c5e;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.flow-card {
+  background: #f8fafc;
+  border-left: 4px solid #2563eb;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.flow-card h3 {
+  margin-top: 0;
+  color: #1e40af;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flow-card ul {
+  margin-bottom: 0;
+}
+
+.field-list {
+  background: #f1f5f9;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  font-size: 0.95rem;
+}
+
+.insight-box {
+  background: #e6f7ed;
+  border: 1px solid #10b981;
+  padding: 1.5rem;
+  border-radius: 12px;
+  margin: 2rem 0;
+}
+
+.insight-box h3 {
+  color: #047857;
+  margin-top: 0;
+}
+
+.timeline-marker {
+  display: inline-block;
+  background: #3b82f6;
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  margin-right: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+ <section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">From Vision to Iteration: The Evolution of Our User Registration Flow</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> March 17, 2026</span>
+        <span><i class="fas fa-clock"></i> 7 min read</span>
+        <span class="article-tags">#EdTech #ProductDevelopment #UserOnboarding #StartupJourney #Supabase</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    <div class="intro-box">
+      <p>At <strong>Tutorial Haven</strong>, our mission has always been to bridge the gap between education and technology. What began as a multi-tiered platform for schools, tutors, and students has evolved through real-world feedback and strategic refinement. Today, I'm pulling back the curtain on how our registration system transformed—and what the journey taught me about building for scale.</p>
+    </div>
+
+    <h2>🎯 The Original Vision: Building for Everyone</h2>
+    <p>When I first built Tutorial Haven, I didn't design it as "just another student app." I envisioned it being adopted by schools and tutorial centers to enhance teaching and learning workflows. So registration wasn't simple. It was split into three distinct flows—each with its own logic, validation, and access controls.</p>
+
+    <p><strong>Here's a look at how our registration system was initially built:</strong> I designed the platform with scalability in mind, envisioning adoption by schools, tutorial centers, tutors, and students alike. The registration was structured into three distinct flows:</p>
+
+    <div class="flow-card">
+      <h3><span>🏫</span> 1. School/Institution Registration</h3>
+      <div class="field-list">
+        <strong>Fields Required:</strong>
+        <ul>
+          <li>First name, last name, username, password, email</li>
+          <li>Tutorial center name, address, discipline (e.g., JAMB, WAEC, JUPEB)</li>
+          <li>Profile picture (optional)</li>
+        </ul>
+      </div>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Basic validation (unique username, email, and center name)</li>
+        <li>Profile picture uploaded via <code>SupabaseStorage()</code> with URL saved to the tutorial center model</li>
+        <li>Creation of both the user and tutorial center objects</li>
+        <li>Redirect to the user's profile page upon success</li>
+      </ul>
+    </div>
+
+    <div class="flow-card">
+      <h3><span>👨‍🏫</span> 2. Tutor Registration</h3>
+      <div class="field-list">
+        <strong>Fields Required:</strong>
+        <ul>
+          <li>Basic user info + selection of institution and courses (16 available)</li>
+          <li>Profile picture</li>
+        </ul>
+      </div>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Same validation and image upload flow</li>
+        <li><strong>Key Feature:</strong> Tutors were linked to their institution, and the center owner received an email notification to approve or reject the registration</li>
+        <li>Tutors had no platform access until approved—ensuring quality and oversight</li>
+      </ul>
+    </div>
+
+    <div class="flow-card">
+      <h3><span>👩‍🎓</span> 3. Student Registration</h3>
+      <div class="field-list">
+        <strong>Fields Required:</strong>
+        <ul>
+          <li>Department (Science, Art, Commercial), institution, subjects</li>
+          <li>Basic user info + phone number (for platform growth insights)</li>
+        </ul>
+      </div>
+      <p><strong>Process:</strong></p>
+      <ul>
+        <li>Validation, profile upload, user + student model creation</li>
+        <li>Email sent to both the institution owner and student</li>
+        <li>Access granted only after approval</li>
+      </ul>
+    </div>
+
+    <p>Each flow included validation checks, profile image uploads, email notifications, and role-based access control. It was comprehensive. It was scalable. And honestly? It was probably too much.</p>
+
+    <h2>🔄 The Evolution: What Changed and Why</h2>
+    <p>Over time, I removed the owner and tutor registration flows (the reasoning will be shared soon), but the architecture taught me something important:</p>
+
+    <div class="insight-box">
+      <h3>💡 The Lesson</h3>
+      <p><strong>Designing for scale early forces you to think beyond "just making it work."</strong> But there's a fine line between scalable architecture and over-engineering for problems you don't yet have.</p>
+    </div>
+
+    <p>Here's what prompted the changes:</p>
+
+    <ul class="emoji-list">
+      <li><span class="timeline-marker">Feedback</span> <strong>User feedback:</strong> Institutions found the approval workflow cumbersome and wanted faster onboarding</li>
+      <li><span class="timeline-marker">Data</span> <strong>Usage patterns:</strong> Most tutors were registering independently before their institution even joined</li>
+      <li><span class="timeline-marker">Complexity</span> <strong>Technical debt:</strong> Maintaining three parallel registration flows with subtle differences created unnecessary complexity</li>
+      <li><span class="timeline-marker">Product</span> <strong>Pivot:</strong> Our product strategy shifted toward a more student-first approach</li>
+    </ul>
+
+    <h2>🏗️ Technical Deep Dive: What the Code Looked Like</h2>
+    <p>For the curious developers, here's a simplified version of how we handled the multi-flow registration with Supabase:</p>
+
+    <pre><code class="language-javascript">// Multi-flow registration handler (simplified)
+async function handleRegistration(userData, userType) {
+  try {
+    // 1. Basic validation
+    await validateUser(userData.email, userData.username);
+    
+    // 2. Upload profile picture if exists
+    let profileUrl = null;
+    if (userData.profileImage) {
+      const { data, error } = await supabase.storage
+        .from('profiles')
+        .upload(`${userType}/${Date.now()}.jpg`, userData.profileImage);
+      profileUrl = data?.publicUrl;
+    }
+    
+    // 3. Create auth user
+    const { data: authUser, error: authError } = await supabase.auth.signUp({
+      email: userData.email,
+      password: userData.password,
+    });
+    
+    // 4. Create role-specific profile
+    const profileData = {
+      user_id: authUser.user.id,
+      first_name: userData.firstName,
+      last_name: userData.lastName,
+      profile_url: profileUrl,
+      ...getRoleSpecificFields(userData, userType)
+    };
+    
+    // 5. Insert into appropriate table
+    const { error: profileError } = await supabase
+      .from(`${userType}_profiles`)
+      .insert(profileData);
+      
+    // 6. Send notifications based on role
+    await sendRoleBasedNotifications(userType, profileData);
+    
+    return { success: true };
+  } catch (error) {
+    console.error('Registration failed:', error);
+    return { success: false, error };
+  }
+}</code></pre>
+
+    <h2>📊 What I'd Do Differently Today</h2>
+    <p>If I were rebuilding this system from scratch with today's knowledge:</p>
+    <ol>
+      <li><strong>Start simpler:</strong> One registration flow with role assignment <em>after</em> email verification</li>
+      <li><strong>Progressive onboarding:</strong> Collect minimal info first, then gather role-specific details after initial value is delivered</li>
+      <li><strong>Feature flags:</strong> Build the architecture for multiple roles, but release them gradually based on demand</li>
+      <li><strong>Analytics from day one:</strong> Track where users drop off in each flow to identify friction points</li>
+    </ol>
+
+    <div class="pro-tip">
+      <h3>⚡ Pro Tip for Fellow Builders</h3>
+      <p>Your first architecture should solve today's problems elegantly while leaving <em>hooks</em> for tomorrow's complexity—not implementing it all upfront. Ask yourself: "What's the simplest thing that could possibly work for our current users?"</p>
+    </div>
+
+    <h2>🔮 What's Next for Tutorial Haven</h2>
+    <p>The registration flow continues to evolve. We're currently experimenting with:</p>
+    <ul>
+      <li>Social login integration (Google, LinkedIn for institutions)</li>
+      <li>Bulk upload for schools importing entire student rosters</li>
+      <li>Simplified approval workflows with optional oversight</li>
+    </ul>
+
+    <p>I built all this quietly. Now I'm finally documenting it—one feature at a time.</p>
+
+    <div class="myth-buster">
+      <h3>📝 Key Takeaway</h3>
+      <p>The best architectures aren't designed perfectly from the start—they evolve through real usage, honest feedback, and the courage to simplify. Tutorial Haven's registration flow taught me that <strong>scalability isn't just about handling more users; it's about adapting to what they actually need.</strong></p>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed this deep dive? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #6b7280;">
+        #EdTech #ProductDevelopment #UserOnboarding #StartupJourney #TechIteration #TutorialHaven #RegistrationFlow #Supabase #ProductStrategy
+      </p>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
