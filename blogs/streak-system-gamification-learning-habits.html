@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How we built a visual streak counter with freeze power-ups to build consistent learning habits through gamification—turning daily login from routine into ritual." />
+    <title>Feature Spotlight: The Streak System in Tutorial Haven | Jephthah Adegbuyi</title>
+    <link rel="icon" href="../blogimages/streak-system-feature.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../blogimages/streak-system-feature.png" />
+    <meta property="og:title" content="Feature Spotlight: The Streak System in Tutorial Haven" />
+    <meta property="og:description" content="How we built a visual streak counter with freeze power-ups to build consistent learning habits through gamification—turning daily login from routine into ritual." />
+    <meta property="og:image" content="https://www.princejetro.com.ng/blogimages/streak-system-feature.png" /> 
+    <meta property="og:url" content="https://www.princejetro.com.ng/blogs/streak-system-gamification-learning-habits.html" /> 
+    <meta property="og:type" content="article" /> 
+    <meta property="og:site_name" content="Jephthah Adegbuyi" />
+    <meta property="article:author" content="https://www.princejetro.com.ng/about.html" /> 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Feature Spotlight: The Streak System in Tutorial Haven" />
+    <meta name="twitter:description" content="How we built a visual streak counter with freeze power-ups to build consistent learning habits through gamification—turning daily login from routine into ritual." />
+    <meta name="twitter:image" content="https://www.princejetro.com.ng/blogimages/streak-system-feature.png" /> 
+    <meta name="twitter:site" content="@princejetro123" /> 
+    <meta name="twitter:creator" content="@princejetro123" /> 
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  color: #2d3c5e;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.streak-hero {
+  background: linear-gradient(135deg, #f97316 0%, #dc2626 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 40px;
+  margin: 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.streak-hero::before {
+  content: "🔥🔥🔥";
+  font-size: 10rem;
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  opacity: 0.2;
+  transform: rotate(10deg);
+}
+
+.streak-counter {
+  font-size: 5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.streak-flame {
+  font-size: 4rem;
+  animation: flicker 1.5s infinite alternate;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 0.9; }
+  100% { transform: scale(1.1); opacity: 1; text-shadow: 0 0 20px #fbbf24; }
+}
+
+.location-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.location-card {
+  background: #f3f4f6;
+  padding: 1.5rem 1rem;
+  border-radius: 16px;
+  text-align: center;
+  border-bottom: 4px solid #f97316;
+  transition: transform 0.2s ease;
+}
+
+.location-card:hover {
+  transform: translateY(-4px);
+}
+
+.location-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.freeze-badge {
+  background: linear-gradient(145deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #0369a1;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  border: 1px solid #7dd3fc;
+}
+
+.tech-card {
+  background: #1e293b;
+  color: white;
+  padding: 2rem;
+  border-radius: 24px;
+  margin: 2rem 0;
+}
+
+.tech-card code {
+  background: #334155;
+  color: #fbbf24;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+}
+
+.api-endpoint {
+  background: #0f172a;
+  padding: 1rem;
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: #7dd3fc;
+  margin: 1rem 0;
+  border-left: 4px solid #f97316;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.feature-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.philosophy-section {
+  background: #fef3c7;
+  padding: 2rem;
+  border-radius: 24px;
+  margin: 2.5rem 0;
+  border: 1px solid #f59e0b;
+  position: relative;
+  overflow: hidden;
+}
+
+.philosophy-section::before {
+  content: "✨";
+  font-size: 5rem;
+  position: absolute;
+  right: -10px;
+  bottom: -20px;
+  opacity: 0.2;
+  transform: rotate(15deg);
+}
+
+.share-modal {
+  background: white;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  max-width: 300px;
+  margin: 2rem auto;
+  border: 1px solid #e5e7eb;
+}
+
+.share-option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  transition: background 0.2s ease;
+}
+
+.share-option:hover {
+  background: #f3f4f6;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+ <section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Feature Spotlight: The Streak System in Tutorial Haven</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> March 19, 2026</span>
+        <span><i class="fas fa-clock"></i> 5 min read</span>
+        <span class="article-tags">#EdTech #Gamification #ProductDesign #TutorialHaven #FeatureSpotlight</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    
+    <div class="streak-hero">
+      <h2 style="color: white; margin-top: 0;">What It Is</h2>
+      <div class="streak-counter">
+        <span class="streak-flame">🔥</span>
+        <span>42</span>
+      </div>
+      <p style="font-size: 1.2rem; max-width: 600px; margin: 1rem auto;">A visual streak counter that tracks consecutive daily logins, with freeze power-ups to maintain streaks through missed days.</p>
+      <p style="opacity: 0.9;">Designed to build consistent learning habits through gamification.</p>
+    </div>
+
+    <h2>📍 Where It Appears</h2>
+    
+    <div class="location-grid">
+      <div class="location-card">
+        <div class="location-icon">📅</div>
+        <h4 style="margin: 0.5rem 0;">Daily Missions Page</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0;">Full streak card with current streak, longest streak, freeze count, and share button</p>
+      </div>
+      
+      <div class="location-card">
+        <div class="location-icon">🧭</div>
+        <h4 style="margin: 0.5rem 0;">Header/Navigation</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0;">Compact flame icon and streak count visible on every page</p>
+      </div>
+      
+      <div class="location-card">
+        <div class="location-icon">📊</div>
+        <h4 style="margin: 0.5rem 0;">Dashboard</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0;">Integrated with user profile and learning metrics</p>
+      </div>
+      
+      <div class="location-card">
+        <div class="location-icon">📱</div>
+        <h4 style="margin: 0.5rem 0;">Activity Feed</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0;">Streak milestones appear in social timelines</p>
+      </div>
+      
+      <div class="location-card">
+        <div class="location-icon">📤</div>
+        <h4 style="margin: 0.5rem 0;">Share Modal</h4>
+        <p style="font-size: 0.9rem; margin-bottom: 0;">Users can share achievements externally</p>
+      </div>
+    </div>
+
+    <h2>❄️ Freeze Power-Ups</h2>
+    
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin: 1.5rem 0;">
+      <div class="freeze-badge">
+        <span>❄️</span> 3 Freezes Available
+      </div>
+      <div class="freeze-badge">
+        <span>🔥</span> 42 Day Streak
+      </div>
+      <div class="freeze-badge">
+        <span>🏆</span> Longest: 67 Days
+      </div>
+    </div>
+    
+    <p>Power-ups prevent streak resets when users miss a day—building consistency without punishment.</p>
+
+    <h2>⚙️ How It Works Technically</h2>
+    
+    <div class="tech-card">
+      <h3 style="color: #fbbf24; margin-top: 0;">Automatic Tracking</h3>
+      <p>Streak updates trigger via <code>GET /missions/daily/</code> API call on login</p>
+      
+      <div class="api-endpoint">
+        GET /missions/daily/ → { "streak": 42, "freezes": 3, "longest": 67 }
+      </div>
+      
+      <h3 style="color: #fbbf24;">Backend Logic</h3>
+      <pre style="background: #334155; padding: 1rem; border-radius: 8px; overflow-x: auto;"><code style="color: #e2e8f0;">def update_streak(user):
+    last_login = user.last_login_date
+    today = date.today()
+    
+    if last_login == today - timedelta(days=1):
+        # Consecutive day
+        user.current_streak += 1
+    elif last_login < today - timedelta(days=1):
+        # Missed day - check freezes
+        if user.freezes_available > 0:
+            user.freezes_available -= 1
+            # Streak preserved
+        else:
+            user.current_streak = 1
+            # Streak reset
+    
+    user.last_login_date = today
+    user.save()</code></pre>
+      
+      <p style="margin-top: 1rem;"><strong>Admin Control:</strong> Full oversight through Django admin interface</p>
+    </div>
+
+    <h2>✨ Key Features</h2>
+    
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🔥</div>
+        <h4 style="margin: 0.5rem 0;">Visual Progress</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">Clear streak counter with flame iconography</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">❄️</div>
+        <h4 style="margin: 0.5rem 0;">Grace Mechanism</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">Freezes prevent punitive resets</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">📱</div>
+        <h4 style="margin: 0.5rem 0;">Social Integration</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">Shareable achievements and activity feed visibility</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">👁️</div>
+        <h4 style="margin: 0.5rem 0;">Persistent Display</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">Always-visible reminder in navigation header</p>
+      </div>
+      
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h4 style="margin: 0.5rem 0;">Operational Control</h4>
+        <p style="margin-bottom: 0; font-size: 0.95rem;">Admin tools for monitoring and adjustments</p>
+      </div>
+    </div>
+
+    <h2>🎯 Share Modal Example</h2>
+    
+    <div class="share-modal">
+      <h4 style="margin-top: 0; text-align: center;">Share Your Achievement</h4>
+      <div class="share-option">
+        <span style="font-size: 1.5rem;">🔥</span>
+        <span>42 Day Streak on Tutorial Haven!</span>
+      </div>
+      <div class="share-option">
+        <span style="font-size: 1.5rem;">❄️</span>
+        <span>Saved by 3 Freezes</span>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 2rem; margin-top: 1.5rem;">
+        <span style="font-size: 1.5rem;">📘</span>
+        <span style="font-size: 1.5rem;">🐦</span>
+        <span style="font-size: 1.5rem;">📷</span>
+        <span style="font-size: 1.5rem;">💬</span>
+      </div>
+    </div>
+
+    <h2>💭 Design Philosophy</h2>
+    
+    <div class="philosophy-section">
+      <p style="font-size: 1.2rem;">The system makes <strong>consistency rewarding without being punishing.</strong></p>
+      <p>By integrating across multiple touchpoints (missions, header, dashboard, social feeds), it turns daily login from a routine into a ritual—celebrating small wins while building long-term learning habits.</p>
+      
+      <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.5rem; justify-content: center;">
+        <span style="background: white; padding: 0.5rem 1rem; border-radius: 50px;">📅 Routine → Ritual</span>
+        <span style="background: white; padding: 0.5rem 1rem; border-radius: 50px;">🔥 Consistency rewarded</span>
+        <span style="background: white; padding: 0.5rem 1rem; border-radius: 50px;">❄️ Grace built in</span>
+      </div>
+    </div>
+
+    <div class="pro-tip">
+      <h3>📊 Streak Milestones in Activity Feed</h3>
+      <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px;">
+        <p><span style="color: #f97316; font-weight: 600;">🔥 John</span> reached a 30-day streak! 🎉</p>
+        <p><span style="color: #f97316; font-weight: 600;">🔥 Sarah</span> used a freeze to save their 50-day streak ❄️</p>
+        <p><span style="color: #f97316; font-weight: 600;">🔥 Michael</span> is on a 7-day streak - keep going!</p>
+      </div>
+    </div>
+
+    <div class="myth-buster">
+      <h3>💡 The Core Insight</h3>
+      <p>The best habit-building systems don't just track progress—they provide <strong>grace</strong> for human imperfection. Freezes acknowledge that life happens, while keeping students engaged with the larger goal of consistent learning.</p>
+    </div>
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Found this feature deep dive valuable? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #6b7280;">
+        #EdTech #Gamification #ProductDesign #TutorialHaven #FeatureSpotlight #LearningHabits #StreakSystem
+      </p>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
