@@ -1,1 +1,10 @@
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Direct path to your sitemap
 Sitemap: https://www.princejetro.com.ng/sitemap.xml
+
+# Optional: Block private or administrative folders if you have any
+# Disallow: /private/
+# Disallow: /temp/
