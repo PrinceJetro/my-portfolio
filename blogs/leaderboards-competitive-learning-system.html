@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How we built a multi-layered leaderboard system that transforms individual study into social, gamified competition—ranking students across subjects, globally, and among friends." />
+    <title>Feature Spotlight: The Leaderboards Powering Competitive Learning | Jephthah Adegbuyi</title>
+    <link rel="icon" href="../blogimages/leaderboards-competitive-learning.png" type="image/png" />
+    <link rel="apple-touch-icon" href="../blogimages/leaderboards-competitive-learning.png" />
+    <meta property="og:title" content="Feature Spotlight: The Leaderboards Powering Competitive Learning" />
+    <meta property="og:description" content="How we built a multi-layered leaderboard system that transforms individual study into social, gamified competition—ranking students across subjects, globally, and among friends." />
+    <meta property="og:image" content="https://www.princejetro.com.ng/blogimages/leaderboards-competitive-learning.png" /> 
+    <meta property="og:url" content="https://www.princejetro.com.ng/blogs/leaderboards-competitive-learning-system.html" /> 
+    <meta property="og:type" content="article" /> 
+    <meta property="og:site_name" content="Jephthah Adegbuyi" />
+    <meta property="article:author" content="https://www.princejetro.com.ng/about.html" /> 
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Feature Spotlight: The Leaderboards Powering Competitive Learning" />
+    <meta name="twitter:description" content="How we built a multi-layered leaderboard system that transforms individual study into social, gamified competition—ranking students across subjects, globally, and among friends." />
+    <meta name="twitter:image" content="https://www.princejetro.com.ng/blogimages/leaderboards-competitive-learning.png" /> 
+    <meta name="twitter:site" content="@princejetro123" /> 
+    <meta name="twitter:creator" content="@princejetro123" /> 
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+.article-content h3 {
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  color: #2d3c5e;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.leaderboard-hero {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color: white;
+  padding: 3rem 2rem;
+  border-radius: 40px;
+  margin: 2rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaderboard-hero::before {
+  content: "🏆📊🏅";
+  font-size: 8rem;
+  position: absolute;
+  right: -20px;
+  bottom: -40px;
+  opacity: 0.1;
+  transform: rotate(10deg);
+}
+
+.tier-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.tier-card {
+  background: white;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  border-top: 6px solid;
+  transition: transform 0.2s ease;
+}
+
+.tier-card:hover {
+  transform: translateY(-8px);
+}
+
+.tier-card.subject {
+  border-top-color: #10b981;
+}
+.tier-card.global {
+  border-top-color: #f59e0b;
+}
+.tier-card.friends {
+  border-top-color: #8b5cf6;
+}
+
+.tier-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.weighted-score {
+  background: #f3f4f6;
+  padding: 1rem;
+  border-radius: 12px;
+  margin: 1rem 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.leaderboard-preview {
+  background: #f9fafb;
+  border-radius: 20px;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  border: 1px solid #e5e7eb;
+}
+
+.leaderboard-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.leaderboard-item:last-child {
+  border-bottom: none;
+}
+
+.rank-badge {
+  width: 32px;
+  height: 32px;
+  background: #e5e7eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.rank-badge.gold {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  color: white;
+}
+.rank-badge.silver {
+  background: linear-gradient(135deg, #e2e8f0, #94a3b8);
+  color: white;
+}
+.rank-badge.bronze {
+  background: linear-gradient(135deg, #fdba74, #f97316);
+  color: white;
+}
+
+.xp-points {
+  margin-left: auto;
+  font-weight: 600;
+  color: #059669;
+}
+
+.api-section {
+  background: #1e293b;
+  color: white;
+  padding: 2rem;
+  border-radius: 24px;
+  margin: 2rem 0;
+}
+
+.api-endpoint {
+  background: #0f172a;
+  padding: 1rem;
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 0.9rem;
+  margin: 1rem 0;
+  border-left: 4px solid #f59e0b;
+}
+
+.referral-badge {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+  color: #92400e;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.location-icons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.location-icon-item {
+  background: #f3f4f6;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.psychology-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.psych-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+.psych-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.balance-list {
+  background: #f0fdf4;
+  padding: 1.5rem;
+  border-radius: 20px;
+  margin: 2rem 0;
+  border: 1px solid #10b981;
+}
+
+.balance-list li {
+  margin-bottom: 0.75rem;
+}
+
+.impact-quote {
+  background: linear-gradient(145deg, #fef3c7, #ffedd5);
+  padding: 2rem;
+  border-radius: 30px;
+  margin: 2rem 0;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  border: 1px solid #f59e0b;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+ <section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Feature Spotlight: The Leaderboards Powering Competitive Learning</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> March 20, 2026</span>
+        <span><i class="fas fa-clock"></i> 7 min read</span>
+        <span class="article-tags">#EdTech #Gamification #CompetitiveLearning #TutorialHaven #FeatureSpotlight</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+    
+    <div class="leaderboard-hero">
+      <h2 style="color: white; margin-top: 0;">What It Is</h2>
+      <p style="font-size: 1.2rem;">A multi-layered leaderboard system designed to transform individual study into social, gamified competition. It ranks students across different dimensions to motivate consistent engagement and foster learning communities.</p>
+    </div>
+
+    <h2>📊 The Three-Tiered Ranking Structure</h2>
+    
+    <div class="tier-grid">
+      <div class="tier-card subject">
+        <div class="tier-title">
+          <span>📚</span> Subject-Based Leaderboards
+        </div>
+        <p><strong>Purpose:</strong> Encourage mastery in specific courses</p>
+        <div class="weighted-score">
+          <strong>Ranking Logic:</strong> Weighted score = Accuracy% × Consistency Bonus
+        </div>
+        <ul>
+          <li>Top 15 performers per subject</li>
+          <li>Dedicated subject leaderboard pages</li>
+        </ul>
+      </div>
+      
+      <div class="tier-card global">
+        <div class="tier-title">
+          <span>🌍</span> Global Leaderboard
+        </div>
+        <p><strong>Purpose:</strong> Track overall platform standing</p>
+        <div class="weighted-score">
+          <strong>Ranking Logic:</strong> Total XP earned across all activities
+        </div>
+        <ul>
+          <li>Paginated results for browsing through thousands of learners</li>
+          <li>Global rankings page and mobile API endpoints</li>
+        </ul>
+      </div>
+      
+      <div class="tier-card friends">
+        <div class="tier-title">
+          <span>👥</span> Friends Leaderboard
+        </div>
+        <p><strong>Purpose:</strong> Foster friendly competition within social circles</p>
+        <div class="weighted-score">
+          <strong>Ranking Logic:</strong> XP comparison among connected users
+        </div>
+        <ul>
+          <li>Real-time updates as friends progress</li>
+          <li>Friends leaderboard views and social features</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>🏆 Subject Leaderboard Preview</h2>
+    
+    <div class="leaderboard-preview">
+      <h4 style="margin-top: 0;">🧬 Biology - Top 5 Performers</h4>
+      <div class="leaderboard-item">
+        <div class="rank-badge gold">1</div>
+        <span><strong>Sarah Johnson</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">92% accuracy</span>
+        <span class="xp-points">2,450 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge silver">2</div>
+        <span><strong>Michael Chen</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">88% accuracy</span>
+        <span class="xp-points">2,120 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge bronze">3</div>
+        <span><strong>Amara Okafor</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">85% accuracy</span>
+        <span class="xp-points">1,980 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">4</div>
+        <span><strong>David Williams</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">82% accuracy</span>
+        <span class="xp-points">1,750 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">5</div>
+        <span><strong>Grace Adebayo</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">79% accuracy</span>
+        <span class="xp-points">1,620 XP</span>
+      </div>
+    </div>
+
+    <h2>🌍 Global Leaderboard Preview</h2>
+    
+    <div class="leaderboard-preview">
+      <h4 style="margin-top: 0;">🏅 Top 5 Overall Learners</h4>
+      <div class="leaderboard-item">
+        <div class="rank-badge gold">1</div>
+        <span><strong>Alex Rivera</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">Level 12</span>
+        <span class="xp-points">12,450 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge silver">2</div>
+        <span><strong>Zainab Ibrahim</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">Level 11</span>
+        <span class="xp-points">11,890 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge bronze">3</div>
+        <span><strong>James Wilson</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">Level 11</span>
+        <span class="xp-points">11,200 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">4</div>
+        <span><strong>Chioma Nwachukwu</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">Level 10</span>
+        <span class="xp-points">10,450 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">5</div>
+        <span><strong>You</strong> 👤</span>
+        <span style="font-size: 0.85rem; color: #6b7280;">Level 9</span>
+        <span class="xp-points">9,200 XP</span>
+      </div>
+    </div>
+
+    <h2>👥 Friends Leaderboard Preview</h2>
+    
+    <div class="leaderboard-preview">
+      <h4 style="margin-top: 0;">🤝 Your Circle - This Week</h4>
+      <div class="leaderboard-item">
+        <div class="rank-badge">1</div>
+        <span><strong>Sarah Johnson</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">+450 XP this week</span>
+        <span class="xp-points">2,450 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">2</div>
+        <span><strong>Michael Chen</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">+320 XP this week</span>
+        <span class="xp-points">2,120 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">3</div>
+        <span><strong>You</strong> 👤</span>
+        <span style="font-size: 0.85rem; color: #6b7280;">+280 XP this week</span>
+        <span class="xp-points">1,980 XP</span>
+      </div>
+      <div class="leaderboard-item">
+        <div class="rank-badge">4</div>
+        <span><strong>David Williams</strong></span>
+        <span style="font-size: 0.85rem; color: #6b7280;">+190 XP this week</span>
+        <span class="xp-points">1,620 XP</span>
+      </div>
+    </div>
+
+    <h2>⚙️ Technical Implementation</h2>
+    
+    <div class="api-section">
+      <h3 style="color: #fbbf24; margin-top: 0;">API Endpoints</h3>
+      
+      <div class="api-endpoint">
+        <code>leaderboard(request)</code> – Renders subject-based leaderboard pages with weighted scoring
+      </div>
+      
+      <div class="api-endpoint">
+        <code>leaderboards_global_paginated(request)</code> – API endpoint for global XP rankings
+      </div>
+      
+      <div class="api-endpoint">
+        <code>leaderboards_friends(request)</code> – API endpoint for friends-only XP comparisons
+      </div>
+      
+      <div class="referral-badge" style="margin-top: 1.5rem;">
+        <span>🎁</span> Referral Integration – Bonus XP (5 points) for successful friend invites
+      </div>
+    </div>
+
+    <h2>📍 Where It Appears Across the Platform</h2>
+    
+    <div class="location-icons">
+      <div class="location-icon-item">📊 Subject ranking pages</div>
+      <div class="location-icon-item">🌍 Global leaderboard displays</div>
+      <div class="location-icon-item">👥 Friends comparison views</div>
+      <div class="location-icon-item">🏅 Achievement references</div>
+      <div class="location-icon-item">📱 Activity feeds</div>
+      <div class="location-icon-item">🎯 Social features</div>
+    </div>
+
+    <h2>💭 Design Philosophy</h2>
+    
+    <p>Leaderboards serve multiple psychological needs:</p>
+    
+    <div class="psychology-grid">
+      <div class="psych-card">
+        <div class="psych-icon">🏃</div>
+        <h4>Competitive Drive</h4>
+        <p>Global rankings for broad comparison</p>
+      </div>
+      <div class="psych-card">
+        <div class="psych-icon">🤝</div>
+        <h4>Social Connection</h4>
+        <p>Friends leaderboard for meaningful peer competition</p>
+      </div>
+      <div class="psych-card">
+        <div class="psych-icon">🎯</div>
+        <h4>Skill Development</h4>
+        <p>Subject-specific rankings to encourage focused mastery</p>
+      </div>
+      <div class="psych-card">
+        <div class="psych-icon">📈</div>
+        <h4>Progress Visibility</h4>
+        <p>Clear metrics show tangible growth over time</p>
+      </div>
+    </div>
+
+    <div class="balance-list">
+      <h4 style="margin-top: 0;">⚖️ Balancing Competition with Community</h4>
+      <p>The system intentionally avoids creating purely extrinsic motivation by:</p>
+      <ul>
+        <li>✅ Celebrating multiple types of achievement (accuracy, consistency, persistence)</li>
+        <li>✅ Balancing competition with community through friends-only views</li>
+        <li>✅ Integrating with the broader XP and leveling system for holistic progression</li>
+      </ul>
+    </div>
+
+    <div class="impact-quote">
+      <p>"By making progress visible and social, the leaderboard system transforms solitary studying into a shared journey. Students don't just compete—they inspire each other, form study groups around subject rankings, and celebrate collective growth."</p>
+    </div>
+
+    <h2>🎯 Impact on Learning Culture</h2>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+      <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px; text-align: center;">
+        <div style="font-size: 2rem;">📈</div>
+        <div>Increased engagement</div>
+      </div>
+      <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px; text-align: center;">
+        <div style="font-size: 2rem;">🤝</div>
+        <div>Study groups formed</div>
+      </div>
+      <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px; text-align: center;">
+        <div style="font-size: 2rem;">🏆</div>
+        <div>Healthy competition</div>
+      </div>
+      <div style="background: #f3f4f6; padding: 1rem; border-radius: 12px; text-align: center;">
+        <div style="font-size: 2rem;">🎉</div>
+        <div>Celebrated milestones</div>
+      </div>
+    </div>
+
+    <div class="pro-tip">
+      <h3>💡 Weighted Score Formula</h3>
+      <div style="background: #f9fafb; padding: 1rem; border-radius: 12px;">
+        <code style="display: block; text-align: center; font-size: 1rem;">
+          Subject Score = (Accuracy% × 100) + (Consistency Bonus × 10)
+        </code>
+        <p style="margin-top: 1rem; margin-bottom: 0; font-size: 0.9rem; text-align: center;">Where Consistency Bonus rewards multiple attempts over time</p>
+      </div>
+    </div>
+
+    <div class="myth-buster">
+      <h3>💡 The Core Insight</h3>
+      <p>The most effective leaderboards don't just rank—they reveal pathways to improvement. By showing students exactly where they stand and who's ahead, we transform abstract competition into concrete, achievable goals.</p>
+    </div>
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Found this leaderboard deep dive valuable? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+      <p style="margin-top: 1.5rem; font-size: 0.9rem; color: #6b7280;">
+        #EdTech #Gamification #CompetitiveLearning #TutorialHaven #FeatureSpotlight #Leaderboards #LearningCommunity
+      </p>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
