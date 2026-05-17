@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/squad-hackathon-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/squad-hackathon-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="How we built OjaPass — a full economic identity platform for Nigeria's informal workers — in 10 days at Squad Hackathon 3.0. Our first hackathon. Here is everything." />
+<title>My First Hackathon — Squad Hackathon 3.0 & OjaPass | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="My First Hackathon — Squad Hackathon 3.0 & OjaPass" />
+<meta property="og:description" content="From 1,600 applicants to shortlisted. Three first-timers. 10 days. Six Squad API integrations. Here is everything." />
+<meta property="og:image" content="https://www.princejetro.com.ng/images/hackathon-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/squad-hackathon.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="My First Hackathon — Squad Hackathon 3.0 & OjaPass" />
+<meta name="twitter:description" content="From 1,600 applicants to shortlisted. Three first-timers. 10 days. Six Squad API integrations. Here is everything." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles from hackathon */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">My First Hackathon — How We Built OjaPass in 10 Days at Squad Hackathon 3.0</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> May 17, 2026</span>
+        <span><i class="fas fa-clock"></i> 10 min read</span>
+        <span class="article-tags">#SquadHackathon3 #OjaPass #FinTechNigeria</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        From 1,600 applicants to the shortlisted 250. Three young Nigerians who had never
+        entered a hackathon before. Ten days of sleepless nights. Six Squad API
+        integrations. One platform built for 90 million invisible workers.
+        Here is everything that happened.
+      </p>
+    </div>
+
+    <p>
+      I got the email on a regular Tuesday afternoon. I almost didn't open it. But the subject line
+      stopped me cold — <em>"You're In. Your Team Has Been Shortlisted for Squad Hackathon 3.0."</em>
+    </p>
+
+    <p>
+      I read it three times. Then I called my teammate. Then I read it again.
+    </p>
+
+    <p>
+      Out of over <strong>1,600 applications</strong> from university students and young builders
+      across Nigeria, Team SmartFlow had made it into the shortlisted 250. We were going to Lagos.
+      We were going to compete. And none of us — not a single one of us — had ever entered a
+      hackathon before.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">1,600+</div>
+        <div class="lbl">Teams Applied</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">250</div>
+        <div class="lbl">Shortlisted</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">#77</div>
+        <div class="lbl">Our Ranking</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">10</div>
+        <div class="lbl">Days to Build</div>
+      </div>
+    </div>
+
+    <h2>The Challenge — And Why It Hit Different</h2>
+
+    <p>
+      Squad Hackathon 3.0's theme was <strong>"Smart Systems: The Intelligent Economy."</strong>
+      We had two challenges to choose from. We chose Challenge 2 — design an intelligent economic
+      system that connects informal traders, job seekers, and financial services in one ecosystem.
+    </p>
+
+    <p>
+      The reason it hit different is because I have seen this problem my entire life. I grew up
+      watching people work hard every single day — market traders, artisans, delivery riders,
+      food vendors — people who move real money, build real businesses, and provide real value.
+      But when they walk into a bank and ask for a loan, the bank says:
+    </p>
+
+    <div class="pull-quote">
+      <p>"You have no financial history. We cannot help you."</p>
+    </div>
+
+    <p>
+      Not because these people aren't creditworthy. But because nobody built the infrastructure
+      to see them. Their work is real. Their income is real. But it leaves no digital trace.
+      And without a trace, they are invisible to the formal financial system.
+    </p>
+
+    <p>
+      That is the problem we decided to solve. We called our platform <strong>OjaPass</strong>.
+      Oja — the Yoruba word for market. Pass — your passport into the formal economy.
+    </p>
+
+    <h2>What We Built</h2>
+
+    <p>
+      I won't pretend the scope wasn't intimidating. When we sat down and mapped out everything
+      the brief was asking for — financial onboarding, AI matching, credit scoring, digital savings,
+      loan infrastructure — it looked impossible in two weeks. But we had done hard things before.
+      Tutorial Haven, LagSciPrep, Inventrii — I have always believed the best way to see if
+      something is possible is to start building it.
+    </p>
+
+    <p>So we started building.</p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">💳</span>
+        <div><strong>Squad Virtual Accounts on registration</strong> — every user gets a real GTBank account number the moment they sign up. No branch visit. No paperwork. Under 60 seconds.</div>
+      </li>
+      <li>
+        <span class="icon">📊</span>
+        <div><strong>OjaScore — a Bayesian credit scoring engine (0–100)</strong> — built from real transaction data, sales records, gig completions, Ajo contributions, and client reviews. Not a made-up number. Math applied to real behaviour.</div>
+      </li>
+      <li>
+        <span class="icon">🏪</span>
+        <div><strong>Mamatally — a full business management layer</strong> — inventory tracking, sales recording, digital storefront, payroll, stock movement ledger. Turning everyday hustle into structured business data.</div>
+      </li>
+      <li>
+        <span class="icon">🔒</span>
+        <div><strong>Gig Marketplace with Escrow</strong> — employers post gigs, AI matches them with the best seekers, escrow is funded via Squad before work begins, Squad Transfer API releases payment on completion. Zero risk for both parties.</div>
+      </li>
+      <li>
+        <span class="icon">🤝</span>
+        <div><strong>Digital Ajo Rotating Savings</strong> — digitizing the centuries-old Nigerian communal savings system. Fully automated. Squad-powered. Contribution consistency feeds the OjaScore.</div>
+      </li>
+      <li>
+        <span class="icon">🏦</span>
+        <div><strong>Loan Engine with real amortisation logic</strong> — loan offers automatically generated when a user crosses a score threshold. Sized to 1.5x their average monthly turnover. Disbursed via Squad Transfer API into their virtual account.</div>
+      </li>
+      <li>
+        <span class="icon">🧠</span>
+        <div><strong>Gemini AI matchmaking and score narratives</strong> — AI that ranks gig applicants by skills, location, and OjaScore, and translates credit score changes into plain English coaching for every user.</div>
+      </li>
+      <li>
+        <span class="icon">💼</span>
+        <div><strong>Seeker Portfolio with verified client reviews</strong> — gig workers post their work history, share a unique UUID token link with past clients, and build a verified digital reputation that no one can fake.</div>
+      </li>
+    </ul>
+
+    <p>
+      Six Squad API integrations in total. Virtual Accounts, Payment Links, Transfer API,
+      Webhook listener, Verify endpoint, and Payout transfer for loan disbursement. Squad
+      wasn't a feature we bolted on at the end. It was the backbone the entire platform was
+      built around.
+    </p>
+
+    <h2>The Nights</h2>
+
+    <p>
+      I won't sugarcoat it. There were nights I genuinely did not sleep. Debugging Django views
+      at 2am. Chasing Squad sandbox errors at 3am. Rewriting the OjaScore engine from scratch
+      on day 9 because I realised the original approach had a fundamental flaw — it was letting
+      volume game the quality calculation.
+    </p>
+
+    <p>
+      There was one night where the Squad sandbox just went down completely. Every payment call
+      was timing out. I sat there refreshing their status page, running pings, trying every URL
+      variant in their docs. Nothing. At some point I just laughed, added a mock fallback, and
+      went to sleep. The sandbox was back by morning.
+    </p>
+
+    <p>
+      That is hackathon life. You build around the blockers. You don't wait for perfect conditions.
+      You ship.
+    </p>
+
+    <h2>The Day — May 15 & 16, Lagos</h2>
+
+    <div class="hackathon-gallery" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 2rem 0;">
+      <!-- Placeholder images for you to replace -->
+      <img src="../images/hackathon-photo1.jpg" alt="Team at Squad Hackathon" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border: 1px solid #e2e8f0;" />
+      <img src="../images/hackathon-photo2.jpg" alt="Hackathon venue and setup" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border: 1px solid #e2e8f0;" />
+      <img src="../images/hackathon-photo3.jpg" alt="Working on OjaPass" style="width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; border: 1px solid #e2e8f0;" />
+    </div>
+
+    <p>
+      Walking into the venue was surreal. Teams everywhere. Laptops open. Energy that you could
+      feel in the air. This was real. This was happening.
+    </p>
+
+    <p>
+      We set up. We did our final demo run. We talked through our scripts. Serah, David, and I
+      each knew exactly what we were going to say and when. We had rehearsed the five-minute
+      demo so many times that I could have done it in my sleep.
+    </p>
+
+    <p>
+      The speech by <strong>Mr. Segun Ajibade</strong> stopped me completely. It was simple.
+      No jargon. No corporate fluff. Just the truth about what it means to build in Nigeria,
+      why it matters, and what the responsibility looks like when you have the ability to build
+      things people need. I wrote nothing down but I have not forgotten a word of it.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "You don't have to be in government offices to shape the economy. You can shape it right
+        from behind your PC."
+      </p>
+    </div>
+
+    <p>
+      We presented. We ranked 77th. We did not make the semifinals.
+    </p>
+
+    <h2>On Not Making the Semifinals</h2>
+
+    <p>
+      I want to be honest about this. There was a sting. We had built something real. We had
+      put everything into it. And we wanted to stand in that room and show it to the world.
+    </p>
+
+    <p>
+      But here is what I know now that I didn't fully know before: the point was never the ranking.
+      The point was what happens inside you when you commit fully to building something that matters,
+      on a deadline, under pressure, for people who actually need it.
+    </p>
+
+    <p>
+      Ranking 77th out of 1,600 applicants — for first-timers — is not a failure. It is a
+      foundation. We now know exactly what we are capable of. We now know how to build under
+      pressure. We now know that the informal economy problem is real, solvable, and worth
+      dedicating serious work to.
+    </p>
+
+    <p>
+      OjaPass is not going in a drawer. It is going into production.
+    </p>
+
+    <h2>What I Learned — For Any First-Time Hackathon Builder</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Build the core loop first. Everything else is decoration.</div>
+      <p class="lesson-body">
+        The judges don't care about 10 features that half work. They care about one complete
+        story — user does X, system does Y, something meaningful happens. Nail that loop first.
+        Every other feature is secondary.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">The API integration must be the backbone, not the bow.</div>
+      <p class="lesson-body">
+        Most teams integrate Squad as the last 10% — a payment button on a checkout page.
+        We built the entire platform around Squad. Virtual accounts at registration. Webhooks
+        driving the scoring engine. Transfer API for payouts. That's the difference between
+        token integration and real integration.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">Narrative is technical. Story is strategy.</div>
+      <p class="lesson-body">
+        How you explain what you built is as important as what you built. Judges are human beings.
+        They respond to stories. Mama Shade in Oyingbo market trying to get a loan she deserves
+        is more powerful than any architecture diagram. Lead with the human. Back it with the tech.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Sleep is part of the build. Skip it at your peril.</div>
+      <p class="lesson-body">
+        There is a version of me at 4am that makes terrible architectural decisions. I have
+        met that version of myself. He is not good at his job. Protect at least 5 hours of
+        sleep especially in the final two days. A rested builder is a better builder.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 05</div>
+      <div class="lesson-title">Your team is everything. Pick people who complement you.</div>
+      <p class="lesson-body">
+        David brought design precision and clinical thinking. Serah brought HR depth and
+        the ability to translate technology into human impact. I brought the engineering.
+        None of us could have done this alone. The combination was the advantage.
+      </p>
+    </div>
+
+    <h2>Thank You, Squad</h2>
+
+    <p>
+      To the entire Squad and GTCO team behind Hackathon 3.0 — what you built here is more
+      than a competition. It is an infrastructure for ignition. You took young builders who
+      had ideas but no stage, and you gave them a real problem, real APIs, real judges, and
+      real consequence. That is an incredible gift.
+    </p>
+
+    <p>
+      You didn't just give us an opportunity. You showed us that the path from a laptop in Lagos
+      to changing how 90 million people interact with money is shorter than we thought. We just
+      have to keep building.
+    </p>
+
+    <p>
+      And we will.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "We are not the team that built a demo. We are the team that will build the company."
+      </p>
+    </div>
+
+    <p>
+      In my next post I'll be sharing a full live demo of OjaPass — the platform, the Squad
+      integrations, the scoring engine, all of it. Watch this space.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Want to see OjaPass in action?</h3>
+      <p>A full live demo is coming soon. Follow me on Twitter for updates.</p>
+      <a href="https://twitter.com/PrinceJetro123" target="_blank" class="btn btn-primary">
+        <i class="fab fa-twitter"></i> Follow @PrinceJetro123
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
