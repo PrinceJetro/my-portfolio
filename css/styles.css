@@ -111,6 +111,18 @@ body {
     max-width: 600px;
 }
 
+.hero-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%);
+    color: #d97706;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
 .hero-cta {
     display: flex;
     gap: 1rem;
@@ -304,6 +316,20 @@ body {
     border-radius: 9999px;
     margin-bottom: 1rem;
     align-self: flex-start;
+}
+
+.hackathon-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.9) 0%, rgba(29, 78, 216, 0.9) 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.4rem 0.8rem;
+    border-radius: 9999px;
+    z-index: 10;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .project-title {

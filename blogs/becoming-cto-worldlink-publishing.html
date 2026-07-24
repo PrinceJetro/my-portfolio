@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/worldlink-cto-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/worldlink-cto-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="How I became CTO of WorldLink Publishing Consortium — an open-access academic publishing platform hosting four peer-reviewed journals. From brand design to backend architecture." />
+<title>Becoming CTO of WorldLink Publishing Consortium | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="Becoming CTO of WorldLink Publishing Consortium" />
+<meta property="og:description" content="An open-access academic publishing platform formed by a consortium of professors across Nigerian universities. How I built the full platform from brand design to backend architecture." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/worldlink-cto-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/becoming-cto-worldlink-publishing.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Becoming CTO of WorldLink Publishing Consortium" />
+<meta name="twitter:description" content="An open-access academic publishing platform formed by a consortium of professors across Nigerian universities. How I built the full platform from brand design to backend architecture." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Becoming CTO of WorldLink Publishing Consortium</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 24, 2026</span>
+        <span><i class="fas fa-clock"></i> 8 min read</span>
+        <span class="article-tags">#AcademicPublishing #CTO #FullStack</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        I joined WorldLink Publishing Consortium as Chief Technology Officer in my 
+        first semester at the University of Lagos. What started as a project with my 
+        course advisor evolved into building a full academic publishing platform — 
+        from brand design to backend architecture. Here's how it happened.
+      </p>
+    </div>
+
+    <p>
+      WorldLink Publishing Consortium is an open-access academic publishing platform 
+      formed by a consortium of professors across several Nigerian universities. The 
+      platform hosts four peer-reviewed journals spanning Life Sciences & Environment, 
+      Physical & Engineering Sciences, Information Technology, and Humanity & Management 
+      Sciences.
+    </p>
+
+    <p>
+      When I joined, the consortium had a vision but no technical implementation. They 
+      needed a platform that could handle journal listings, archives, editorial board 
+      management, e-books, and a complete author submission flow. They needed someone 
+      who could translate academic publishing requirements into a functional digital 
+      platform.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">4</div>
+        <div class="lbl">Journals</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Open</div>
+        <div class="lbl">Access</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Monthly</div>
+        <div class="lbl">Publication</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Django</div>
+        <div class="lbl">Backend</div>
+      </div>
+    </div>
+
+    <h2>The Beginning — From Course Advisor to CTO</h2>
+
+    <p>
+      The opportunity came through my course advisor at UNILAG, who also serves on the 
+      consortium's editorial leadership. We had been discussing my technical work — 
+      Tutorial Haven, LagSciPrep, and various hackathon projects — when he mentioned 
+      that WorldLink needed technical leadership.
+    </p>
+
+    <p>
+      The consortium had been operating with manual processes — email submissions, 
+      manual review tracking, PDF distribution. They needed a system that could 
+      automate these workflows while maintaining the academic rigor and peer review 
+      standards that researchers expect.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Academic publishing doesn't need to be manual to be rigorous. Technology can enhance quality, not compromise it."</p>
+    </div>
+
+    <p>
+      I started working on the platform in my first semester, balancing it with 
+      coursework and other projects. What began as a technical contribution evolved 
+      through several rounds of design, testing, and review — eventually leading to 
+      a formal CTO appointment and a seat on the editorial board.
+    </p>
+
+    <h2>What I Built — From Brand to Backend</h2>
+
+    <p>
+      My contributions spanned the full technical stack and beyond. This wasn't just 
+      implementing a spec — it was helping define what the platform should be.
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">🎨</span>
+        <div><strong>Brand Identity Design</strong> — I designed the logo and color theme for the entire platform. The visual identity needed to communicate academic credibility while remaining modern and accessible. We went with a professional blue palette with clean typography.</div>
+      </li>
+      <li>
+        <span class="icon">🌐</span>
+        <div><strong>Full Website Build</strong> — Built the complete platform from scratch: journal listings with search and filtering, archives organized by volume and issue, editorial board management system, e-books section, and the complete author submission flow with status tracking.</div>
+      </li>
+      <li>
+        <span class="icon">🗄️</span>
+        <div><strong>Supabase Backend Architecture</strong> — Chose Supabase for content storage because of its real-time capabilities and PostgreSQL foundation. The database handles articles, journal covers, instructional documents, author profiles, and submission metadata with proper relational structure.</div>
+      </li>
+      <li>
+        <span class="icon">🔄</span>
+        <div><strong>Iterative Testing Cycles</strong> — Worked directly with the editorial team through multiple rounds of testing and feedback. Each iteration refined the user experience based on actual academic workflows — from initial submission to peer review to final publication.</div>
+      </li>
+      <li>
+        <span class="icon">📝</span>
+        <div><strong>Author Submission Flow</strong> — Built a comprehensive submission system that guides authors through the process: manuscript upload, metadata entry, author information, abstract submission, and file formatting checks with real-time validation.</div>
+      </li>
+      <li>
+        <span class="icon">👥</span>
+        <div><strong>Editorial Board Management</strong> — Created a system for managing editorial board members across all four journals, with role-based access for editors, reviewers, and administrators.</div>
+      </li>
+    </ul>
+
+    <h2>The Technical Stack</h2>
+
+    <p>
+      For the backend, I used Django with Supabase as the database layer. Django's 
+      robust authentication and admin system provided a solid foundation, while 
+      Supabase gave us real-time capabilities and easy file storage for articles and 
+      journal covers.
+    </p>
+
+    <p>
+      The frontend is built with React for a responsive, modern user experience. We 
+      focused on making complex academic workflows feel simple — researchers shouldn't 
+      need technical expertise to submit their work.
+    </p>
+
+    <p>
+      One of the key technical challenges was handling PDF storage and delivery. 
+      Articles are published in PDF format only, and we needed a system that could 
+      handle uploads, storage, and efficient delivery without performance issues. 
+      Supabase's storage solution handled this elegantly.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The best technical architecture is invisible. Users should focus on their research, not the platform."</p>
+    </div>
+
+    <h2>What I Learned</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Academic workflows are more complex than they appear.</div>
+      <p class="lesson-body">
+        A simple "submit article" flow actually involves multiple stakeholders: authors, 
+        editors, reviewers, and publishers. Each has different needs and access levels. 
+        Building a system that accommodates all these roles while maintaining security 
+        required careful planning and role-based access design.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">Brand design matters in academic publishing.</div>
+      <p class="lesson-body">
+        Researchers trust established brands. A poorly designed platform signals low 
+        quality, regardless of the actual content. Investing in professional brand 
+        identity — logo, color scheme, typography — was essential for establishing 
+        credibility with authors and readers.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">Iterative feedback is non-negotiable.</div>
+      <p class="lesson-body">
+        We went through several rounds of testing with actual editorial board members. 
+        What seemed intuitive to me as a developer wasn't always intuitive to academics 
+        who had been using manual processes for years. Their feedback was invaluable 
+        in shaping the final user experience.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">CTO is more than a title — it's responsibility.</div>
+      <p class="lesson-body">
+        Being appointed CTO meant taking ownership of the platform's technical future. 
+        It wasn't just about building the initial version — it was about planning for 
+        scalability, security, and long-term maintenance. The role carries real 
+        responsibility for the platform's success.
+      </p>
+    </div>
+
+    <h2>What's Next for WorldLink</h2>
+
+    <p>
+      WorldLink Publishing Consortium is now live at worldlinkpub.com, with all four 
+      journals actively publishing monthly issues. The platform is handling real 
+      submissions from researchers across Nigeria and beyond.
+    </p>
+
+    <p>
+      We're planning several enhancements: improved search functionality across all 
+      journals, citation tracking for published articles, and integration with academic 
+      indexing services. We're also exploring features like author dashboards and 
+      automated plagiarism checking.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "Open access publishing isn't just about removing paywalls — it's about 
+        removing barriers to knowledge dissemination entirely."
+      </p>
+    </div>
+
+    <p>
+      For me personally, this role has been invaluable experience working at the 
+      intersection of technology and academia. It's taught me how to translate 
+      complex domain requirements into functional software, how to work with 
+      diverse stakeholders, and how to take technical leadership responsibility.
+    </p>
+
+    <p>
+      If you're a researcher looking to publish or an institution interested in 
+      partnering with WorldLink, visit the platform. We're building for a future 
+      where African research has global visibility — and technology is making that 
+      possible.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Explore WorldLink Publishing Consortium</h3>
+      <p>Visit the platform to browse journals, access research, or submit your work.</p>
+      <a href="https://www.worldlinkpub.com/" target="_blank" class="btn btn-primary">
+        <i class="fas fa-external-link-alt"></i> Visit WorldLink
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/agrivoice-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/agrivoice-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="How we built AgriVoice — a multilingual voice-AI assistant for Nigerian farmers at Wetech AI Hackathon. Accessible via phone/USSD for low-literacy users." />
+<title>AgriVoice — Voice AI for Nigerian Farmers at Wetech AI Hackathon | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="AgriVoice — Voice AI for Nigerian Farmers at Wetech AI Hackathon" />
+<meta property="og:description" content="A multilingual voice-AI assistant for Nigerian farmers, accessible via phone/USSD — built for low-literacy, low-connectivity users who need agricultural guidance without needing a smartphone." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/agrivoice-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/agrivoice-wetech-ai-hackathon.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AgriVoice — Voice AI for Nigerian Farmers at Wetech AI Hackathon" />
+<meta name="twitter:description" content="A multilingual voice-AI assistant for Nigerian farmers, accessible via phone/USSD — built for low-literacy, low-connectivity users who need agricultural guidance without needing a smartphone." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">AgriVoice — Voice AI for Nigerian Farmers at Wetech AI Hackathon</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 24, 2026</span>
+        <span><i class="fas fa-clock"></i> 9 min read</span>
+        <span class="article-tags">#WetechAI #AgriTech #VoiceAI</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        Most agricultural AI solutions are built for farmers who don't exist — farmers with 
+        smartphones, reliable internet, and digital literacy. At the Wetech AI Hackathon, 
+        Zeroday built AgriVoice — a multilingual voice-AI assistant accessible via basic 
+        phone and USSD, designed for the farmers who actually need it.
+      </p>
+    </div>
+
+    <p>
+      The gap in agricultural technology isn't about the technology itself — it's about 
+      who the technology is built for. Most agri-tech startups design for the 10% of farmers 
+      who are digitally connected. The other 90% — smallholder farmers in rural Nigeria — 
+      are left behind.
+    </p>
+
+    <p>
+      These farmers face real problems: crop diseases, pest outbreaks, changing weather 
+      patterns, market price fluctuations. They need agricultural expertise. But they 
+      can't access it through apps they can't use, in languages they don't speak, on 
+      devices they don't own.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">70%</div>
+        <div class="lbl">Rural Farmers</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">500+</div>
+        <div class="lbl">Local Languages</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">48h</div>
+        <div class="lbl">Build Time</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">USSD</div>
+        <div class="lbl">Primary Channel</div>
+      </div>
+    </div>
+
+    <h2>The Problem — Why AgriTech Must Be Inclusive</h2>
+
+    <p>
+      The Wetech AI Hackathon theme was AI for social impact. When we looked at agriculture, 
+      we saw a massive inclusion problem. The most sophisticated agricultural AI systems — 
+      computer vision for disease detection, predictive analytics for yield optimization, 
+      market intelligence platforms — all assume smartphone access and digital literacy.
+    </p>
+
+    <p>
+      But the reality of Nigerian agriculture is different:
+    </p>
+
+    <p>
+      <strong>Language barriers.</strong> Many farmers speak local languages — Hausa, Yoruba, 
+      Igbo, and dozens of others. Most agri-tech tools are in English or require literacy 
+      to navigate menus and read outputs.
+    </p>
+
+    <p>
+      <strong>Connectivity gaps.</strong> Rural areas often have poor or no internet coverage. 
+      Data-heavy apps simply don't work. Even when connectivity exists, data costs are 
+      prohibitive for farmers operating on thin margins.
+    </p>
+
+    <p>
+      <strong>Device limitations.</strong> Many farmers use basic feature phones, not smartphones. 
+      Touch interfaces, app stores, and complex navigation are foreign to them.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The best agricultural AI is useless if the people who need it can't access it."</p>
+    </div>
+
+    <p>
+      We asked ourselves: what if we built agricultural AI that meets farmers where 
+      they are — on their phones, in their languages, using the connectivity they have?
+    </p>
+
+    <p>
+      That question led to <strong>AgriVoice</strong>.
+    </p>
+
+    <h2>What We Built</h2>
+
+    <p>
+      AgriVoice is a voice-first agricultural assistant that works through two primary 
+      channels: regular phone calls and USSD (the *#* codes that work on any phone, 
+      even without data).
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">🎤</span>
+        <div><strong>Voice Interaction in Local Languages</strong> — farmers call a dedicated number and speak in their preferred language (Hausa, Yoruba, Igbo, or English). The AI understands the query and responds in the same language.</div>
+      </li>
+      <li>
+        <span class="icon">📞</span>
+        <div><strong>USSD Menu System</strong> — for farmers without voice credit or in noisy environments, a structured USSD menu provides access to key services: weather forecasts, market prices, pest alerts, and extension services.</div>
+      </li>
+      <li>
+        <span class="icon">🌾</span>
+        <div><strong>Crop Disease Diagnosis</strong> — farmers describe symptoms (leaf color, spots, growth patterns) and the AI provides likely diagnoses and treatment recommendations based on agricultural research databases.</div>
+      </li>
+      <li>
+        <span class="icon">🌤️</span>
+        <div><strong>Localized Weather Forecasts</strong> — hyper-local weather predictions specific to the farmer's LGA, with planting and harvesting recommendations based on forecast conditions.</div>
+      </li>
+      <li>
+        <span class="icon">💰</span>
+        <div><strong>Market Price Information</strong> — real-time prices for key crops at nearby markets, helping farmers decide when and where to sell for better returns.</div>
+      </li>
+      <li>
+        <span class="icon">🔔</span>
+        <div><strong>Pest & Disease Alerts</strong> - proactive notifications about emerging pest threats in the region, with preventive measures farmers can take before infestation occurs.</div>
+      </li>
+      <li>
+        <span class="icon">👨‍🌾</span>
+        <div><strong>Extension Service Connection</strong> — for complex issues beyond AI capability, the system can connect farmers with human agricultural extension officers via callback.</div>
+      </li>
+    </ul>
+
+    <h2>The Build — Voice AI & USSD Integration</h2>
+
+    <p>
+      Our backend was Django with PostgreSQL. The core challenge was the voice AI integration. 
+      We used a combination of speech-to-text, natural language processing, and text-to-speech 
+      services, all optimized for low-bandwidth environments.
+    </p>
+
+    <p>
+      For language support, we trained custom models on agricultural terminology in Hausa, 
+      Yoruba, and Igbo. This wasn't just translation — it was understanding agricultural 
+      concepts in local dialects and contexts. "Yellow leaves" might mean nitrogen deficiency 
+      in one context and water stress in another — the AI had to understand the difference.
+    </p>
+
+    <p>
+      The USSD integration was technically simpler but UX-critical. We designed the menu 
+      hierarchy carefully — no more than three levels deep, with clear numeric options and 
+      the ability to go back at any point. We tested the flow with actual farmers to ensure 
+      it felt natural, not like a technical system.
+    </p>
+
+    <div class="pull-quote">
+      <p>"USSD isn't a fallback — for many farmers, it's the primary interface. Design it like it matters."</p>
+    </div>
+
+    <h2>What We Learned</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Voice AI must understand context, not just words.</div>
+      <p class="lesson-body">
+        Early versions of our voice model would translate "my tomatoes are dying" literally 
+        and give generic advice. But farmers don't speak like textbooks — they describe 
+        symptoms in local terms, with cultural context. We had to train the AI to understand 
+        agricultural language as it's actually spoken, not as it's written in manuals.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">Low-literacy design is different from simple design.</div>
+      <p class="lesson-body">
+        Simple design assumes the user can read. Low-literacy design assumes they might not 
+        be able to. Voice-first interfaces, audio feedback, and visual cues (like colored 
+        buttons on feature phones) become essential. We learned to test with users who 
+        had varying literacy levels, not just the digitally savvy.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">Offline capability isn't optional in rural Nigeria.</div>
+      <p class="lesson-body">
+        We built caching mechanisms so that frequently accessed information — like common 
+        pest treatments or standard planting calendars — could be retrieved without an 
+        active data connection. The system syncs when connectivity is available but remains 
+        functional when it's not.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Trust is built through human connection, not just accuracy.</div>
+      <p class="lesson-body">
+        Farmers were initially skeptical of AI recommendations. What convinced them wasn't 
+        the technology — it was the ability to connect with a human extension officer 
+        when the AI wasn't enough. The AI handles routine queries; humans handle the complex 
+        ones. That hybrid approach built trust.
+      </p>
+    </div>
+
+    <h2>What's Next for AgriVoice</h2>
+
+    <p>
+      AgriVoice is currently in pilot testing with farming cooperatives in three states. 
+      Early feedback has been positive — farmers appreciate being able to get answers 
+      in their own language without traveling to extension offices or waiting for 
+      agricultural officers to visit their communities.
+    </p>
+
+    <p>
+      We're expanding the language support to include more local dialects and adding 
+      more specialized agricultural domains — livestock management, aquaculture, and 
+      post-harvest storage. We're also exploring partnerships with agricultural input 
+      suppliers to connect farmers with seeds, fertilizers, and equipment through the 
+      same voice interface.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "Agricultural technology should amplify farmer wisdom, not replace it. The best 
+        AI learns from farmers, not just teaches them."
+      </p>
+    </div>
+
+    <p>
+      If you're interested in deploying AgriVoice in your farming community or contributing 
+      agricultural expertise to our knowledge base, get in touch. We're building for the 
+      millions of farmers who feed Nigeria — and they deserve technology that speaks 
+      their language.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Want to support AgriVoice?</h3>
+      <p>We're looking for agricultural experts, language specialists, and pilot partners.</p>
+      <a href="https://twitter.com/PrinceJetro123" target="_blank" class="btn btn-primary">
+        <i class="fab fa-twitter"></i> Follow @PrinceJetro123
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

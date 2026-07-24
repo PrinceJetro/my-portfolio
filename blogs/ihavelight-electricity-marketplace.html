@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/ihavelight-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/ihavelight-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="iHaveLight — A hyperlocal electricity-access marketplace connecting Lagos solar/inverter hosts with neighbors who need power. Built with Paystack-powered wallet escrow." />
+<title>iHaveLight — Building Lagos' Electricity Marketplace | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="iHaveLight — Building Lagos' Electricity Marketplace" />
+<meta property="og:description" content="A hyperlocal electricity-access marketplace connecting Lagos solar/inverter hosts with neighbors who need a place to charge devices or work. Built with Paystack-powered wallet escrow, NIN verification, and tiered listing types." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/ihavelight-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/ihavelight-electricity-marketplace.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="iHaveLight — Building Lagos' Electricity Marketplace" />
+<meta name="twitter:description" content="A hyperlocal electricity-access marketplace connecting Lagos solar/inverter hosts with neighbors who need a place to charge devices or work. Built with Paystack-powered wallet escrow, NIN verification, and tiered listing types." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">iHaveLight — Building Lagos' Electricity Marketplace</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 24, 2026</span>
+        <span><i class="fas fa-clock"></i> 10 min read</span>
+        <span class="article-tags">#EnergyAccess #Lagos #Marketplace</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        In Lagos, electricity is unevenly distributed. Some homes have reliable solar 
+        and inverter systems. Others struggle with daily outages. iHaveLight connects 
+        these two groups — a hyperlocal marketplace where hosts with power can share 
+        it with neighbors who need it. Built with Paystack-powered wallet escrow, NIN 
+        verification, and tiered listing types.
+      </p>
+    </div>
+
+    <p>
+      The problem is visible everywhere in Lagos. One street has homes with solar panels 
+        and battery backups humming quietly through grid outages. The next street over, 
+        students are studying by phone flashlights because the power has been out for 
+        six hours.
+    </p>
+
+    <p>
+      The gap isn't about resources — it's about distribution. People who have invested 
+        in alternative power solutions have excess capacity much of the time. People who 
+        need power have nowhere to turn when the grid fails. The infrastructure for 
+        sharing this resource simply doesn't exist.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">40%</div>
+        <div class="lbl">Grid Uptime</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">2M+</div>
+        <div class="lbl">Solar Homes</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Django</div>
+        <div class="lbl">Backend</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Paystack</div>
+        <div class="lbl">Payments</div>
+      </div>
+    </div>
+
+    <h2>The Problem — Why Electricity Sharing Matters</h2>
+
+    <p>
+      Nigeria's electricity challenges are well-documented. Grid instability is the norm, 
+      not the exception. In Lagos, the commercial capital, businesses and households 
+      have adapted by investing in alternative power solutions — solar panels, inverters, 
+      generators.
+    </p>
+
+    <p>
+      But these solutions are individual. Each household solves its own problem. There's 
+      no mechanism for sharing capacity. A home with a 5kVA inverter might be using only 
+      2kVA at night while a neighbor down the street is desperate for power to charge 
+      devices or work.
+    </p>
+
+    <p>
+      This is inefficient and inequitable. It's also a missed economic opportunity. 
+      Hosts with excess capacity could monetize it. Seekers who need power could pay 
+      for access. The market exists — it just needs a platform.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Electricity shouldn't be a zero-sum game. When one person has power, everyone should have access."</p>
+    </div>
+
+    <p>
+      We called our solution <strong>iHaveLight</strong> — a simple declaration that becomes 
+      an invitation to share.
+    </p>
+
+    <h2>What We Built</h2>
+
+    <p>
+      iHaveLight is a two-sided marketplace with three core user types: hosts (people with 
+      power to share), seekers (people who need power), and the platform that connects them 
+      safely.
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">🏠</span>
+        <div><strong>Two Listing Types</strong> — "Drop & Go" for quick device charging (phones, laptops) with minimal host interaction, and "Private Space" for extended work sessions where seekers can work in the host's space.</div>
+      </li>
+      <li>
+        <span class="icon">💳</span>
+        <div><strong>Paystack-Powered Wallet System</strong> — both hosts and seekers have platform wallets. Seekers fund wallets via Paystack; payments are held in escrow until the session is completed and confirmed, then released to the host.</div>
+      </li>
+      <li>
+        <span class="icon">🆔</span>
+        <div><strong>NIN Verification</strong> — all users must verify their National Identity Number before listing or booking. This creates accountability and trust in a peer-to-peer marketplace where strangers are meeting in physical spaces.</div>
+      </li>
+      <li>
+        <span class="icon">⭐</span>
+        <div><strong>Rating & Review System</strong> — after each session, both host and seeker can rate each other. Reviews are public and influence future booking decisions. Bad actors get filtered out over time.</div>
+      </li>
+      <li>
+        <span class="icon">📍</span>
+        <div><strong>Hyperlocal Search</strong> — seekers can find hosts within specific radii (500m, 1km, 2km) with real-time availability status. The platform shows estimated walking time and power capacity.</div>
+      </li>
+      <li>
+        <span class="icon">🔔</span>
+        <div><strong>Session Management</strong> — hosts can set availability windows. Seekers can book sessions in advance or request immediate access. The platform handles check-in, check-out, and automatic payment release.</div>
+      </li>
+      <li>
+        <span class="icon">📊</span>
+        <div><strong>Analytics Dashboard</strong> — hosts can track earnings, utilization rates, and peak demand times. Seekers can track spending and favorite hosts for repeat bookings.</div>
+      </li>
+    </ul>
+
+    <h2>The Build — Django, React & Paystack Integration</h2>
+
+    <p>
+      Our backend is Django with PostgreSQL. We chose Django for its robust authentication 
+      system, which we extended with custom NIN verification logic. The database schema 
+      handles complex relationships — users can be both hosts and seekers, listings have 
+      multiple availability windows, and sessions have various states (pending, confirmed, 
+      in-progress, completed, disputed).
+    </p>
+
+    <p>
+      The frontend is React/Vite for a responsive, real-time experience. We used WebSockets 
+      for live availability updates — when a host marks themselves as available, seekers 
+      see it instantly without refreshing.
+    </p>
+
+    <p>
+      The Paystack integration was critical. We built a custom wallet system that sits on 
+      top of Paystack's payment APIs. When a seeker funds their wallet, money goes into 
+      our platform account. When they book a session, funds are moved to escrow. Only 
+      when both parties confirm completion are funds released to the host's wallet, from 
+      which they can withdraw to their bank account.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Escrow isn't just about security — it's about creating trust between strangers."</p>
+    </div>
+
+    <h2>Trademark & Legal Protection</h2>
+
+    <p>
+      One aspect of iHaveLight that we took seriously from the beginning was intellectual 
+      property protection. We filed for trademark registration through UNILAG's ITMO 
+      (Intellectual Property and Technology Management Office).
+    </p>
+
+    <p>
+      This wasn't just about protecting the brand — it was about signaling seriousness. 
+      When you're building a marketplace that involves physical meetups and financial 
+      transactions, users need to know you're committed for the long term. A registered 
+      trademark is one signal of that commitment.
+    </p>
+
+    <h2>What We Learned</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Trust systems are more important than feature lists.</div>
+      <p class="lesson-body">
+        We could have added dozens of features — advanced scheduling, group bookings, 
+        dynamic pricing. But what actually matters is trust. NIN verification, escrow 
+        payments, rating systems — these are the features that make people comfortable 
+        meeting strangers and transacting money. Everything else is secondary.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">Physical marketplaces need physical safety considerations.</div>
+      <p class="lesson-body">
+        This isn't just a digital platform — it facilitates physical meetups. We had to 
+        think about safety features that don't apply to pure digital marketplaces: 
+        public meeting point recommendations, emergency contact sharing, session 
+        check-in requirements, and clear policies for handling disputes or safety 
+        incidents.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">Wallet escrow is complex but necessary.</div>
+      <p class="lesson-body">
+        Building a wallet system on top of payment APIs is more complicated than direct 
+        payments. You have to handle funding, escrow, release, refunds, disputes, and 
+        withdrawal flows. You need robust accounting and audit trails. But the complexity 
+        is worth it — escrow solves the fundamental trust problem in peer-to-peer 
+        marketplaces.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Hyperlocal means hyper-specific data.</div>
+      <p class="lesson-body">
+        General location data isn't enough. We needed walking times, neighborhood 
+        boundaries, and local context. A 500m radius means something different in a 
+        dense area like Yaba than it does in a sprawling area like Lekki. We had to 
+        build location intelligence that understands Lagos specifically, not just 
+        generic geography.
+      </p>
+    </div>
+
+    <h2>What's Next for iHaveLight</h2>
+
+    <p>
+      iHaveLight is currently in final testing stages before public launch. We're running 
+      a closed beta with selected hosts and seekers in specific Lagos neighborhoods to 
+      validate the core flows and gather feedback.
+    </p>
+
+    <p>
+      We're planning a phased rollout — starting with high-density areas where the 
+      host-seeker ratio is favorable, then expanding based on demand. We're also 
+      exploring partnerships with solar installation companies to offer iHaveLight 
+      integration as a value-add for their customers.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "The future of energy isn't just about generating more — it's about sharing what 
+        we have more intelligently."
+      </p>
+    </div>
+
+    <p>
+      If you're interested in becoming a host or joining our waitlist as a seeker, get 
+      in touch. We're building for a Lagos where electricity access is shared, not 
+      hoarded — where having light means your neighbors can too.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Want to join iHaveLight?</h3>
+      <p>We're launching soon. Sign up for early access as a host or seeker.</p>
+      <a href="https://twitter.com/PrinceJetro123" target="_blank" class="btn btn-primary">
+        <i class="fab fa-twitter"></i> Follow @PrinceJetro123
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/campusalert-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/campusalert-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="How we built CampusAlert — a campus safety and infrastructure reporting platform at The Forge 2026 hackathon. Built with Zeroday to let students flag safety issues in real time." />
+<title>CampusAlert — Building Campus Safety at The Forge 2026 | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="CampusAlert — Building Campus Safety at The Forge 2026" />
+<meta property="og:description" content="A campus safety and infrastructure reporting platform built with Zeroday, letting students flag safety issues and broken infrastructure in real time." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/campusalert-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/campusalert-the-forge-2026.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="CampusAlert — Building Campus Safety at The Forge 2026" />
+<meta name="twitter:description" content="A campus safety and infrastructure reporting platform built with Zeroday, letting students flag safety issues and broken infrastructure in real time." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">CampusAlert — Building Campus Safety at The Forge 2026</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 24, 2026</span>
+        <span><i class="fas fa-clock"></i> 8 min read</span>
+        <span class="article-tags">#TheForge2026 #CampusSafety #Zeroday</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        Campus safety shouldn't depend on who you know or how loud you can shout. 
+        At The Forge 2026 hackathon, my team Zeroday built CampusAlert — a platform 
+        that lets students flag safety issues and broken infrastructure in real time. 
+        Here's how we built it, what we learned, and why campus safety matters.
+      </p>
+    </div>
+
+    <p>
+      The problem is familiar to anyone who has spent time on a Nigerian university campus. 
+      A broken streetlight that never gets fixed. A security checkpoint that's always empty. 
+      A flooded walkway that students navigate every single day. The complaints are made — 
+      to hall wardens, to student government, to anyone who will listen — but nothing changes.
+    </p>
+
+    <p>
+      Not because people don't care. But because there's no system to capture, track, and 
+      escalate these issues systematically. Reports disappear into conversations. Problems 
+      persist until someone gets hurt or something breaks completely.
+    </p>
+
+    <p>
+      That's the problem we decided to solve at The Forge 2026 hackathon. We called it <strong>CampusAlert</strong>.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">48h</div>
+        <div class="lbl">Build Time</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">4</div>
+        <div class="lbl">Team Members</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Django</div>
+        <div class="lbl">Backend</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">React</div>
+        <div class="lbl">Frontend</div>
+      </div>
+    </div>
+
+    <h2>The Challenge — Why Campus Safety Hits Different</h2>
+
+    <p>
+      The Forge 2026 theme was around building solutions for campus life. When we brainstormed, 
+      campus safety kept coming up. Every single person on the team had a story — a near-miss 
+      at night, a broken facility that caused an injury, a security concern that was dismissed.
+    </p>
+
+    <p>
+      What struck us was how universal the problem was. This wasn't about one hall or one 
+      faculty. This was about the entire campus ecosystem. And the gap wasn't resources — 
+      universities have maintenance budgets, security teams, and administrative structures. 
+      The gap was visibility and accountability.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The problem isn't that nobody cares. The problem is that nobody knows."</p>
+    </div>
+
+    <p>
+      A broken light in Block B, Room 204 might be a minor annoyance to the student who lives there. 
+      But if you aggregate that data across the entire campus — if you could see that 40% of 
+      streetlights in a particular zone are non-functional — that's a pattern that demands action.
+    </p>
+
+    <p>
+      That's what CampusAlert does. It turns individual complaints into collective data.
+    </p>
+
+    <h2>What We Built</h2>
+
+    <p>
+      We had 48 hours. The scope had to be tight, but the impact had to be real. We focused on 
+      three core capabilities: reporting, tracking, and escalation.
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">📍</span>
+        <div><strong>Geotagged Incident Reporting</strong> — students can report issues with precise location data, photos, and severity levels. The system automatically categorizes reports by type (safety, infrastructure, security, maintenance).</div>
+      </li>
+      <li>
+        <span class="icon">📊</span>
+        <div><strong>Real-time Dashboard</strong> — administrators get a live view of all campus issues, filtered by severity, location, and category. Heat maps show problem zones. Trend analysis identifies recurring issues.</div>
+      </li>
+      <li>
+        <span class="icon">🔔</span>
+        <div><strong>Automated Escalation</strong> — when a report reaches a certain severity threshold or age, the system automatically escalates to the appropriate department head with a full audit trail.</div>
+      </li>
+      <li>
+        <span class="icon">📱</span>
+        <div><strong>Mobile-First Design</strong> — built for students who are on the move. Quick reporting flow. Offline mode for areas with poor connectivity. Push notifications for status updates.</div>
+      </li>
+      <li>
+        <span class="icon">👥</span>
+        <div><strong>Anonymous Option</strong> — students can choose to report anonymously for sensitive safety concerns, protecting those who fear retaliation.</div>
+      </li>
+    </ul>
+
+    <h2>The Build — 48 Hours with Zeroday</h2>
+
+    <p>
+      This was our second hackathon as Zeroday. We had learned from Squad Hackathon 3.0 — 
+      we knew the value of starting with the core loop and building out from there. We also 
+      knew that sleep deprivation leads to bad architectural decisions.
+    </p>
+
+    <p>
+      Our stack was Django for the backend, React/Vite for the frontend, and PostgreSQL 
+      for the database. We chose this stack because we knew it — we could move fast without 
+      fighting the tools.
+    </p>
+
+    <p>
+      The first 12 hours were all about the data model. We spent serious time thinking about 
+      what an "issue" actually is in a campus context. It's not just a description and a photo. 
+      It's location, severity, category, status, reporter (optional), assigned department, 
+      resolution notes, timestamps, and audit trail.
+    </p>
+
+    <p>
+      Getting that data model right meant everything else flowed naturally. The reporting form 
+      just captured the model fields. The dashboard just visualized the aggregated data. 
+      The escalation logic just queried by status and age.
+    </p>
+
+    <div class="pull-quote">
+      <p>"A good data model is half the battle. The rest is just UI."</p>
+    </div>
+
+    <h2>The Demo — Why Judges Responded</h2>
+
+    <p>
+      When we demoed CampusAlert, we didn't lead with the tech stack. We led with the story. 
+      We walked through a scenario: a student walking back to their hall at night notices 
+      a broken security light. They open CampusAlert, tap "Report," select the category, 
+      add a photo, and hit submit.
+    </p>
+
+    <p>
+      On the admin dashboard, that report appears instantly — geotagged on a map, categorized 
+      as "Security Infrastructure," marked as "High Severity." The security head gets a push 
+      notification. They assign it to the maintenance team. The student gets a status update 
+      when it's resolved.
+    </p>
+
+    <p>
+      That entire flow took 60 seconds to demonstrate. But it showed the complete story — 
+      problem, solution, impact.
+    </p>
+
+    <h2>What We Learned</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Data models are the foundation of everything.</div>
+      <p class="lesson-body">
+        We spent 12 hours on our data model and it paid off. Every feature after that was 
+        just manipulating that model in different ways. Rush this step and you'll spend 
+        the rest of the hackathon fighting your own architecture.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">Anonymous reporting is a feature, not a bug.</div>
+      <p class="lesson-body">
+        We initially debated whether to allow anonymous reports. Some team members worried 
+        about accountability. But we realized that for safety issues — harassment, assault, 
+        security threats — anonymity is what enables reporting at all. We built it in and 
+        it became one of our strongest features.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">Geotagging changes everything.</div>
+      <p class="lesson-body">
+        Adding location data to reports transformed them from isolated complaints into 
+        spatial patterns. We could show heat maps of problem zones. We could route reports 
+        to the nearest maintenance team. Location isn't just metadata — it's context.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Hackathons are about the team, not just the code.</div>
+      <p class="lesson-body">
+        Zeroday has now done two hackathons together. We know each other's strengths. 
+        We know how to communicate under pressure. We know when to push and when to 
+        compromise. That team dynamic is what makes the difference between a working 
+        prototype and a polished demo.
+      </p>
+    </div>
+
+    <h2>What's Next for CampusAlert</h2>
+
+    <p>
+      CampusAlert is currently live at campusalert-ten.vercel.app. We're in conversations 
+      with student government bodies at multiple universities about pilot deployments. 
+      The feedback from The Forge 2026 judges was clear — this solves a real problem and 
+      it solves it in a way that respects both student safety and administrative workflow.
+    </p>
+
+    <p>
+      We're planning to add predictive analytics — using historical data to identify 
+      emerging problem zones before they become critical. We're also exploring integration 
+      with existing campus management systems so that reports can flow directly into 
+      work order systems.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "Campus safety isn't about eliminating risk. It's about managing it intelligently 
+        with data, not ignoring it until something breaks."
+      </p>
+    </div>
+
+    <p>
+      If you're interested in deploying CampusAlert at your institution or contributing to 
+      the project, get in touch. Campus safety is a collective responsibility — and 
+        technology can help us share that burden more effectively.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Want to see CampusAlert in action?</h3>
+      <p>Check out the live demo and see how we're making campuses safer, one report at a time.</p>
+      <a href="https://campusalert-ten.vercel.app" target="_blank" class="btn btn-primary">
+        <i class="fas fa-external-link-alt"></i> View Live Demo
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

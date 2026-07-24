@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/bridgr-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/bridgr-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="How we built Bridgr — a multi-currency cross-border payment platform at OPay Innovation Challenge. Targeting UK/US → Nigeria/Ghana remittance corridor." />
+<title>Bridgr — Building Cross-Border Payments at OPay Innovation Challenge | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="Bridgr — Building Cross-Border Payments at OPay Innovation Challenge" />
+<meta property="og:description" content="A multi-currency cross-border payment platform targeting the UK/US → Nigeria/Ghana remittance corridor, built to make sending money home faster and cheaper." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/bridgr-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/bridgr-opay-innovation-challenge.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bridgr — Building Cross-Border Payments at OPay Innovation Challenge" />
+<meta name="twitter:description" content="A multi-currency cross-border payment platform targeting the UK/US → Nigeria/Ghana remittance corridor, built to make sending money home faster and cheaper." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2563eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Bridgr — Building Cross-Border Payments at OPay Innovation Challenge</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> July 24, 2026</span>
+        <span><i class="fas fa-clock"></i> 7 min read</span>
+        <span class="article-tags">#OPayChallenge #FinTech #Remittances</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        The remittance corridor between the UK/US and Nigeria/Ghana is one of the busiest 
+        in the world — and one of the most expensive. At the OPay Innovation Challenge, 
+        Zeroday built Bridgr — a multi-currency cross-border payment platform designed 
+        to make sending money home faster, cheaper, and more transparent.
+      </p>
+    </div>
+
+    <p>
+      I've seen this problem up close. Friends who moved to the UK for work sending money 
+      back to family in Lagos. Relatives in the US supporting siblings in Accra. The process 
+      is the same every time — high fees, poor exchange rates, delays that range from 
+      annoying to critical when someone needs money urgently.
+    </p>
+
+    <p>
+      The global remittance market moves hundreds of billions of dollars annually. The 
+      World Bank estimates that the average cost of sending remittances is still around 
+      6.5% — and for some corridors, it's significantly higher. That's billions of dollars 
+      that never reach the people who need it.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">6.5%</div>
+        <div class="lbl">Avg Global Fee</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">$700B</div>
+        <div class="lbl">Annual Remittances</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">48h</div>
+        <div class="lbl">Build Time</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Django</div>
+        <div class="lbl">Backend</div>
+      </div>
+    </div>
+
+    <h2>The Problem — Why Remittances Need Rebuilding</h2>
+
+    <p>
+      The OPay Innovation Challenge theme was financial inclusion and innovation. When we 
+      looked at the remittance space, we saw three fundamental problems:
+    </p>
+
+    <p>
+      <strong>First, opacity.</strong> Most remittance services don't show you the real 
+      exchange rate until you're about to send. You see a "rate" that's actually marked 
+      up by 3-5%, and then there are fees on top of that. The total cost is hidden until 
+      the last moment.
+    </p>
+
+    <p>
+      <strong>Second, slowness.</strong> Traditional bank transfers can take 3-5 business days. 
+      Even digital remittance services often take 24-48 hours. When someone needs money for 
+      rent, medical bills, or school fees, two days is too long.
+    </p>
+
+    <p>
+      <strong>Third, fragmentation.</strong> Different services work for different corridors. 
+      One service might be good for UK→Nigeria but terrible for US→Ghana. Users end up 
+      juggling multiple apps and accounts.
+    </p>
+
+    <div class="pull-quote">
+      <p>"Sending money home shouldn't require a finance degree. It should be as simple as sending a text message."</p>
+    </div>
+
+    <p>
+      We called our solution <strong>Bridgr</strong> — because that's what it does. It bridges 
+      the gap between where people are and where their money needs to go.
+    </p>
+
+    <h2>What We Built</h2>
+
+    <p>
+      We focused on the UK/US → Nigeria/Ghana corridor specifically. This is one of the 
+      highest-volume remittance corridors globally, and it's where we have the deepest 
+      understanding of user needs.
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">💱</span>
+        <div><strong>Real-Time Exchange Rates</strong> — we pull live rates from multiple sources and show users the mid-market rate with our transparent markup displayed clearly. No hidden fees. No surprise deductions.</div>
+      </li>
+      <li>
+        <span class="icon">⚡</span>
+        <div><strong>Instant Transfers</strong> — for transfers under $5,000, we offer instant delivery to Nigerian bank accounts and mobile money wallets in Ghana. No waiting. No "processing time."</div>
+      </li>
+      <li>
+        <span class="icon">🔒</span>
+        <div><strong>Multi-Layer Security</strong> — biometric verification, transaction monitoring for fraud patterns, and encrypted storage of all sensitive data. Security isn't optional when you're moving people's life savings.</div>
+      </li>
+      <li>
+        <span class="icon">📱</span>
+        <div><strong>Recipient Management</strong> — users can save frequently used recipients with bank details, making repeat transfers as simple as selecting a name and entering an amount.</div>
+      </li>
+      <li>
+        <span class="icon">📊</span>
+        <div><strong>Transfer History & Analytics</strong> — complete audit trail of all transfers with status tracking, receipts, and spending analytics to help users budget their remittances.</div>
+      </li>
+      <li>
+        <span class="icon">🌍</span>
+        <div><strong>Multi-Currency Support</strong> — users can hold balances in GBP, USD, NGN, and GHS, converting between currencies at optimal times rather than being forced to convert immediately.</div>
+      </li>
+    </ul>
+
+    <h2>The Build — Django & Payment APIs</h2>
+
+    <p>
+      Our backend was Django with PostgreSQL. We chose Django because of its robust 
+      authentication system, ORM for complex financial data models, and admin interface 
+      for transaction monitoring.
+    </p>
+
+    <p>
+      The real challenge was the payment integrations. We had to connect with multiple 
+      payment providers — bank transfer APIs in the UK and US, mobile money APIs in 
+      Ghana, and the Nigerian banking system through NIBSS.
+    </p>
+
+    <p>
+      We built a routing engine that automatically selects the optimal payment channel 
+      based on amount, destination, and urgency. Small transfers might go through mobile 
+      money for instant delivery. Large transfers might route through bank transfers for 
+      better rates. The user doesn't see any of this complexity — they just see their 
+      money arrive.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The best payment experience is one where the user doesn't think about payments at all."</p>
+    </div>
+
+    <h2>What We Learned</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Financial products require financial precision.</div>
+      <p class="lesson-body">
+        In EdTech, a rounding error might mean a student sees 99% instead of 100%. In 
+        fintech, a rounding error means real money is lost or gained. We had to be 
+        obsessively precise about decimal handling, exchange rate calculations, and 
+        fee structures.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">Regulatory compliance isn't optional.</div>
+      <p class="lesson-body">
+        We spent significant time understanding KYC (Know Your Customer) and AML (Anti-Money 
+        Laundering) requirements. These aren't bureaucratic hurdles — they're essential 
+        safeguards. Any fintech product that ignores compliance will fail, either by 
+        regulator action or by being exploited by bad actors.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">User trust is the product.</div>
+      <p class="lesson-body">
+        People don't use remittance services for the features. They use them because they 
+        trust that their money will arrive safely and on time. Every design decision — from 
+        security notifications to receipt formatting — is about building and maintaining 
+        that trust.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Corridor-specific knowledge matters.</div>
+      <p class="lesson-body">
+        A generic remittance platform will fail against incumbents who understand each 
+        corridor's specific needs. UK→Nigeria has different pain points than US→Ghana. 
+        Local payment methods, regulatory requirements, and user expectations all vary. 
+        Deep corridor knowledge is a competitive advantage.
+      </p>
+    </div>
+
+    <h2>What's Next for Bridgr</h2>
+
+    <p>
+      Bridgr is currently in development as we finalize partnerships with payment providers 
+      and complete regulatory compliance. We're targeting a pilot launch in Q4 2026, 
+      initially focusing on the UK→Nigeria corridor before expanding to US→Ghana.
+    </p>
+
+    <p>
+      The feedback from OPay Innovation Challenge judges highlighted the importance of 
+      our transparent pricing model and instant transfer capabilities. There's clear 
+      demand for a remittance service that doesn't hide fees and doesn't make users wait.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "The future of remittances isn't about better technology — it's about better 
+        economics for the people who need it most."
+      </p>
+    </div>
+
+    <p>
+      If you're interested in early access to Bridgr or want to learn more about our 
+        approach to cross-border payments, get in touch. We're building for the millions 
+        of people who send money home every month — and they deserve better than what 
+        they're getting now.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Want to stay updated on Bridgr?</h3>
+      <p>We're launching soon. Follow for updates on our pilot program and launch timeline.</p>
+      <a href="https://twitter.com/PrinceJetro123" target="_blank" class="btn btn-primary">
+        <i class="fab fa-twitter"></i> Follow @PrinceJetro123
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
