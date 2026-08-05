@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="icon" href="../blogimages/nithub-2026-cover.jpg" type="image/png" />
+<link rel="apple-touch-icon" href="../blogimages/nithub-2026-cover.jpg" />
+
+<!-- Open Graph Meta Tags -->
+<meta name="description" content="Built Bridgr — a cross-border fintech platform with AI-powered fee optimization and BMONI API integration — in under 24 hours at the NITHUB Innovation Fair Hackathon 2026." />
+<title>Bridgr — 24 Hours at NITHUB Innovation Fair Hackathon 2026 | Jephthah Adegbuyi</title>
+
+<!-- Open Graph Meta Tags (Optional for richer sharing on socials) -->
+<meta property="og:title" content="Bridgr — 24 Hours at NITHUB Innovation Fair Hackathon 2026" />
+<meta property="og:description" content="Built Bridgr — a cross-border fintech platform with AI-powered fee optimization and BMONI API integration — in under 24 hours at the NITHUB Innovation Fair Hackathon 2026 powered by BMONI." />
+<meta property="og:image" content="https://www.princejetro.com.ng/blogimages/nithub-2026-cover.jpg" />
+<meta property="og:url" content="https://www.princejetro.com.ng/blogs/nithub-innovation-fair-2026.html" />
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="Jephthah Adegbuyi" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Bridgr — 24 Hours at NITHUB Innovation Fair Hackathon 2026" />
+<meta name="twitter:description" content="Built Bridgr — a cross-border fintech platform with AI-powered fee optimization and BMONI API integration — in under 24 hours at the NITHUB Innovation Fair Hackathon 2026 powered by BMONI." />
+
+  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    /* Individual Blog Post Page */
+
+.blog-article-page {
+  font-family: 'Inter', sans-serif;
+  padding-top: 80px;
+  color: #111827;
+  line-height: 1.8;
+}
+
+.article-hero {
+  background: #f3f4f6;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.article-meta {
+  font-size: 0.9rem;
+  color: #6b7280;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  justify-content: center;
+}
+
+.article-tags {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.article-content {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 25px;
+}
+
+.article-content h2 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+  color: #1f2937;
+}
+
+.article-content p {
+  margin-bottom: 1.25rem;
+  font-size: 1.05rem;
+}
+
+.article-content code {
+  background: #f9fafb;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.95rem;
+}
+
+.article-content pre {
+  background: #f3f4f6;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+
+.article-footer {
+  margin-top: 3rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.share-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.share-buttons .share {
+  font-size: 1.1rem;
+  color: #2563eb;
+  transition: color 0.2s ease;
+}
+
+.share-buttons .share:hover {
+  color: #1e40af;
+}
+
+/* Custom styles */
+    .pull-quote {
+      border-left: 4px solid #2563eb;
+      background: #eff6ff;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .pull-quote p {
+      margin: 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: #1e40af;
+      font-weight: 500;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .stat-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .stat-box .num {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat-box .lbl {
+      font-size: 0.78rem;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-list {
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      list-style: none;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: 0.95rem;
+      color: #374151;
+    }
+
+    .feature-list li:last-child { border-bottom: none; }
+
+    .feature-list .icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    .lesson-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .lesson-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.4rem;
+    }
+
+    .lesson-title {
+      font-weight: 600;
+      color: #111827;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .lesson-body {
+      color: #64748b;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .closing-box {
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      border-radius: 16px;
+      padding: 2rem;
+      margin-top: 3rem;
+      text-align: center;
+      color: #f1f5f9;
+    }
+
+    .closing-box h3 {
+      color: #f1f5f9;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .closing-box p {
+      color: #94a3b8;
+      margin-bottom: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .closing-box .btn {
+      margin: 0.25rem;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    
+    .closing-box .btn-primary {
+      background: #2063eb;
+      color: #fff;
+    }
+    
+    .closing-box .btn-secondary {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+    }
+
+    .team-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .team-card .role {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2563eb;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.4rem;
+    }
+
+    .team-card .name {
+      font-weight: 600;
+      color: #111827;
+      font-size: 1rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <header class="main-header">
+    <div class="container">
+      <nav class="navbar">
+        <a href="../index.html" class="logo">Jephthah<span>.</span></a>
+        <ul class="nav-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../skills.html">Skills</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+          <li><a href="../bloglist.html">Blogs</a></li>
+        </ul>
+        <div class="hamburger"><span></span><span></span><span></span></div>
+      </nav>
+    </div>
+  </header>
+
+<main class="blog-article-page">
+<section class="article-hero">
+    <div class="container">
+      <h1 class="article-title">Bridgr — 24 Hours at NITHUB Innovation Fair Hackathon 2026</h1>
+      <div class="article-meta">
+        <span><i class="fas fa-calendar-alt"></i> August 6, 2026</span>
+        <span><i class="fas fa-clock"></i> 7 min read</span>
+        <span class="article-tags">#NITHUB2026 #BMONI #FinTech</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="article-content container">
+    <!-- Start Writing Here -->
+
+    <div class="intro-box">
+      <p>
+        24 hours. One theme: "Intelligent Money for Everyone." One API partner: BMONI. 
+        One goal: build a testable financial experience with meaningful AI integration. 
+        Our team Zeroday built Bridgr — a cross-border payment platform for the 
+        UK/US → Nigeria/Ghana corridor. Here's how it happened.
+      </p>
+    </div>
+
+    <p>
+      The NITHUB Innovation Fair Hackathon 2026 was different from any hackathon 
+      I'd done before. It wasn't just about building something — it was about 
+      building something with real fintech APIs, real multi-currency wallets, 
+      real stablecoins, and real biometric tech integration.
+    </p>
+
+    <p>
+      BMONI wasn't just a sponsor — they were the API partner. We had to integrate 
+      their sandbox API into a functional product. Live exchange rates. Transfer 
+      initiation. Account verification. Webhook-based status updates. This wasn't 
+      mock data — this was a real fintech platform.
+    </p>
+
+    <div class="stat-grid">
+      <div class="stat-box">
+        <div class="num">24h</div>
+        <div class="lbl">Build Time</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">₦1M</div>
+        <div class="lbl">Prize Pool</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">Top 7</div>
+        <div class="lbl">Finalists</div>
+      </div>
+      <div class="stat-box">
+        <div class="num">BMONI</div>
+        <div class="lbl">API Partner</div>
+      </div>
+    </div>
+
+    <h2>The Challenge — Intelligent Money for Everyone</h2>
+
+    <p>
+      The theme was clear: financial technology should be intelligent, accessible, 
+      and inclusive. The remittance corridor between the UK/US and Nigeria/Ghana 
+      is one of the busiest in the world — and one of the most expensive. 
+      Traditional services charge high fees, offer poor exchange rates, and 
+      provide limited control over how transactions work.
+    </p>
+
+    <p>
+      We asked ourselves: what if we gave users more control? What if we used 
+      AI to optimize their transactions? What if we built something that actually 
+      solved the problems people face when sending money home?
+    </p>
+
+    <p>
+      That question led to <strong>Bridgr</strong>.
+    </p>
+
+    <h2>What We Built — Bridgr</h2>
+
+    <p>
+      In under 24 hours, including an overnight build sprint at NITHUB, we designed, 
+      built, and shipped a fully functional Django web app. Here's what Bridgr does:
+    </p>
+
+    <ul class="feature-list">
+      <li>
+        <span class="icon">💸</span>
+        <div><strong>Fee Optimization Engine</strong> — users choose whether sender pays, recipient pays, or both split the transaction fee. This is a feature not offered by Wise, LemFi, or any major competitor. It gives users full control over cost distribution.</div>
+      </li>
+      <li>
+        <span class="icon">🛡️</span>
+        <div><strong>Fair Fee Shield</strong> — locks the exchange rate at quote time, protecting users from naira volatility between confirmation and processing. No surprise deductions when the transfer completes.</div>
+      </li>
+      <li>
+        <span class="icon">🏫</span>
+        <div><strong>Direct Institution Payments</strong> — funds routed directly to verified schools, hospitals, and businesses without passing through a personal account. Reduces friction and increases trust for institutional transfers.</div>
+      </li>
+      <li>
+        <span class="icon">🤖</span>
+        <div><strong>AI Fee Recommendation</strong> — Gemini API analyzes user transfer history and recipient type to suggest the optimal fee distribution before the user chooses. Smart suggestions, not random choices.</div>
+      </li>
+      <li>
+        <span class="icon">💱</span>
+        <div><strong>BMONI API Integration</strong> — live exchange rates, transfer initiation, account verification, and webhook-based status updates all powered by BMONI's sandbox. Real fintech, not mock data.</div>
+      </li>
+      <li>
+        <span class="icon">🏪</span>
+        <div><strong>Vendor Marketplace</strong> — marketplace for verified informal exchange agents, connecting users with trusted local options for cash transactions.</div>
+      </li>
+    </ul>
+
+    <h2>The Team — Zeroday</h2>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="role">Team Lead</div>
+        <div class="name">Vera Adaeze Margaret Ezeanya</div>
+      </div>
+      <div class="team-card">
+        <div class="role">Full-Stack Developer</div>
+        <div class="name">Adegbuyi Jephthah</div>
+      </div>
+      <div class="team-card">
+        <div class="role">UI/UX Designer</div>
+        <div class="name">Alasi Wuraola Fathia</div>
+      </div>
+    </div>
+
+    <h2>The Grind — 24 Hours at NITHUB</h2>
+
+    <p>
+      We accepted the hackathon on July 28. Arrived at the Innovation Fair venue on 
+      July 29 at 3PM for the launch. By 5PM, we'd moved to NITHUB and started building.
+    </p>
+
+    <p>
+      We built through the night. No sleep. Just code, coffee, and the occasional 
+      break to stretch. The NITHUB space became our world — laptops open, screens 
+      glowing, ideas flowing.
+    </p>
+
+    <p>
+      My role was full-stack development with focus on backend architecture and 
+      BMONI integration. I built the Django REST Framework backend, integrated 
+      BMONI's sandbox API for live rates and transfers, and implemented the AI layer 
+      using Gemini API for fee recommendations.
+    </p>
+
+    <div class="pull-quote">
+      <p>"The best hackathons aren't about the prize — they're about what you prove to yourself you can build."</p>
+    </div>
+
+    <p>
+      We submitted within the 3-5PM window on July 30. The submission wasn't just 
+      code — it was a fully functional web app that actually worked. Real API calls. 
+      Real transfers (in sandbox). Real user flows.
+    </p>
+
+    <p>
+      On July 31, we pitched. We were selected as one of the top 7 teams to present 
+      to the judging panel. Standing there, showing what we'd built in 24 hours, 
+      I felt something I'd felt before — the proof that we can build real things 
+      that solve real problems.
+    </p>
+
+    <h2>What We Learned</h2>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 01</div>
+      <div class="lesson-title">Real APIs force you to think about edge cases.</div>
+      <p class="lesson-body">
+        When you're working with mock data, everything works perfectly. When you're 
+        working with real fintech APIs, you have to handle rate limits, network 
+        failures, webhook delays, and authentication tokens that expire. Building 
+        with BMONI's sandbox taught us to think about production realities, not 
+        just happy paths.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 02</div>
+      <div class="lesson-title">Fee distribution is a competitive advantage.</div>
+      <p class="lesson-body">
+        We discovered that none of the major remittance services offer users the 
+        choice to decide who pays fees. Sender pays, recipient pays, or split — 
+        this simple feature gives users control they don't have elsewhere. Sometimes 
+        the best innovations aren't complex tech — they're giving users options 
+        nobody else thought to offer.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 03</div>
+      <div class="lesson-title">AI should enhance, not replace, user choice.</div>
+      <p class="lesson-body">
+        Our AI fee recommendation doesn't make the decision for the user — it 
+        suggests the optimal choice based on their history and recipient type. 
+        The user still decides. AI as advisor, not dictator. That's how AI should 
+        work in financial products.
+      </p>
+    </div>
+
+    <div class="lesson-card">
+      <div class="lesson-num">Lesson 04</div>
+      <div class="lesson-title">Overnight builds test more than code — they test team dynamics.</div>
+      <p class="lesson-body">
+        Building through the night reveals how a team handles stress, fatigue, and 
+        pressure. Zeroday worked well together — clear communication, mutual support, 
+        shared vision. That's what got us through the 24-hour sprint and into the 
+        top 7 finalists.
+      </p>
+    </div>
+
+    <h2>What's Next for Bridgr</h2>
+
+    <p>
+      Bridgr is currently in development as we explore partnerships and prepare for 
+      a pilot launch. The NITHUB Innovation Fair Hackathon gave us validation — 
+      the judges saw the value in fee optimization, fair fee shields, and direct 
+      institution payments.
+    </p>
+
+    <p>
+      We're planning to expand beyond the UK/US → Nigeria/Ghana corridor to other 
+      African remittance routes. We're also exploring integration with additional 
+      payment providers and financial institutions to expand the direct payment 
+      network.
+    </p>
+
+    <div class="pull-quote">
+      <p>
+        "The future of remittances isn't about better technology — it's about 
+        giving users more control over how their money moves."
+      </p>
+    </div>
+
+    <p>
+      If you're interested in early access to Bridgr or want to learn more about our 
+      approach to cross-border payments, get in touch. We're building for the 
+        millions of people who send money home every month — and they deserve 
+        better than what they're getting now.
+    </p>
+
+    <!-- Closing CTA -->
+    <div class="closing-box">
+      <h3>Want to see what we built in 24 hours?</h3>
+      <p>Bridgr is cross-border fintech that gives users control. Follow for updates on our pilot program and launch timeline.</p>
+      <a href="https://twitter.com/PrinceJetro123" target="_blank" class="btn btn-primary">
+        <i class="fab fa-twitter"></i> Follow @PrinceJetro123
+      </a>
+      <a href="../projects.html" class="btn btn-secondary">
+        View All Projects
+      </a>
+    </div>
+
+    <!-- End Writing -->
+
+    <div class="article-footer">
+      <p>Enjoyed the article? <a href="../contact.html">Get in touch</a> or <a href="../bloglist.html">read more blogs</a>.</p>
+      <div class="share-buttons">
+        <a href="https://x.com/PrinceJetro123" class="share"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.linkedin.com/in/jephthah-adegbuyi-38a76524a/" class="share"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.instagram.com/princejetro123/" class="share"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>
